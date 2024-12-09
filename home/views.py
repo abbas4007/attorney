@@ -9,10 +9,11 @@ from .models import Article, Parvandeh
 class HomeView(View) :
     def get(self, request) :
         articles = Article.objects.all()
-        return render(request, 'home/home.html', context = {'articles' : articles})
-
-
-class ParvandeView(View) :
-    def get(self, request) :
         parvandeh = Parvandeh.objects.all()
-        return render(request, 'home/home.html', context = {'parvandeh' : parvandeh})
+
+        return render(request, 'home/home.html', context = {'articles' : articles,'parvandeh':parvandeh})
+
+
+# class ParvandeView(View) :
+#     def get(self, request) :
+#         return render(request, 'home/home.html', context = {'parvandeh' : parvandeh})

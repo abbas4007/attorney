@@ -1,13 +1,12 @@
-{% extends 'base.html' %}
+{% extends 'account/base.html' %}
 
-{% block title %}{% block title-meta %}
+{% block title %}
 	لیست مقالات
-{% endblock %}{% endblock %}
+{% endblock %}
 
-{% block main %}
+{% block content %}
 		<div class="row">
           <div class="col-12">
-            {% if object_list %}
               <div class="card">
                 <!-- /.card-header -->
                 <div class="card-body table-responsive p-0">
@@ -76,9 +75,7 @@
                 <!-- /.card-body -->
               </div>
               <!-- /.card -->
-              {% else %}
-              <h3>محتوایی برای نمایش وجود ندارد.</h3>
-              {% endif %}
+
           </div>
         </div>
 {% endblock %}
