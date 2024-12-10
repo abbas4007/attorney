@@ -10,7 +10,6 @@ class HomeView(View) :
     def get(self, request) :
         articles = Article.objects.all()
         parvandeh = Parvandeh.objects.all()
-
         return render(request, 'home/home.html', context = {'articles' : articles,'parvandeh':parvandeh})
 
 
