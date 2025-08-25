@@ -1,0 +1,162 @@
+# forms.py
+from botocore.exceptions import ValidationError
+from django import forms
+from django.forms import modelformset_factory
+from django.db import transaction
+from home.models import ArticleFile,Article, ArticleImage, Category
+from django.core.exceptions import ValidationError
+from django.db.utils import IntegrityError
+from django import forms
+from .models import ContactMessage
+import jdatetime
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+
+
+
+
+class ArticleFileForm(forms.ModelForm):
+    class Meta:
+        model = ArticleFile
+        fields = ['file']
+
+
+class ArticleImageForm(forms.ModelForm) :
+
+    class Meta :
+        model = ArticleImage
+        fields = ['image']
+
+
+class MultipleFileInput(forms.ClearableFileInput) :
+    allow_multiple_selected = True
+
+
+class MultipleFileField(forms.FileField) :
+    def __init__(self, *args, **kwargs) :
+        kwargs.setdefault("widget", MultipleFileInput(attrs = {'multiple' : True}))
+        super().__init__(*args, **kwargs)
+
+    def clean(self, data, initial=None) :
+        if not data and initial :
+            return initial
+
+        if not isinstance(data, (list, tuple)) :
+            data = [data]
+
+        cleaned_data = []
+        for file_data in data :
+            if file_data :  # اگر فایل خالی نباشد
+                try :
+                    cleaned_data.append(super().clean(file_data, initial))
+                except forms.ValidationError as e :
+                    raise forms.ValidationError(
+                        f"خطا در فایل {file_data.name}: {str(e)}"
+                    )
+        return cleaned_data
+
+
+class ArticleForm(forms.ModelForm) :
+    files = MultipleFileField(
+        required = False,
+        label = 'فایل‌های ضمیمه',
+        help_text = 'می‌توانید چند فایل را همزمان انتخاب کنید'
+    )
+
+    images = MultipleFileField(
+        required = False,
+        label = 'تصاویر گالری',
+        help_text = 'می‌توانید چند تصویر را همزمان انتخاب کنید'
+    )
+
+    class Meta :
+        model = Article
+        fields = [
+            'title', 'description', 'category', 'thumbnail',
+            'author', 'is_special', 'status',
+            'video'
+        ]
+        widgets = {
+            'description' : forms.Textarea(attrs = {'class' : 'ckeditor'}),
+            'publish' : forms.DateInput(attrs = {'type' : 'date'}),
+        }
+        labels = {
+            'description' : 'محتوا',
+        }
+
+    def __init__(self, *args, **kwargs) :
+        super().__init__(*args, **kwargs)
+        if not self.instance.pk :  # فقط برای ایجاد مقاله جدید
+            self.fields['author'].initial = self.initial.get('author')
+
+    def save(self, commit=True) :
+        instance = super().save(commit = commit)
+
+        # ذخیره فایل‌های اضافی
+        for file in self.cleaned_data.get('files', []) :
+            ArticleFile.objects.create(article = instance, file = file)
+
+        # ذخیره تصاویر گالری
+        for image in self.cleaned_data.get('images', []) :
+            ArticleImage.objects.create(article = instance, image = image)
+
+        return instance
+
+ArticleImageFormSet = modelformset_factory(
+    ArticleImage,
+    form=ArticleImageForm,
+    extra=3
+)
+
+
+
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = ['title', ]
+
+
+
+
+    def clean(self):
+        cleaned_data = super().clean()
+        day = cleaned_data.get('day')
+        month = cleaned_data.get('month')
+        year = cleaned_data.get('year')
+
+        try:
+            j_date = jdatetime.date(year, month, day)
+            g_date = j_date.togregorian()
+            cleaned_data['expire_date'] = g_date
+        except Exception as e:
+            raise forms.ValidationError("تاریخ وارد شده نامعتبر است.")
+
+        return cleaned_data
+
+    def save(self, commit=True) :
+        instance = super().save(commit = False)
+        instance.expire_date = self.cleaned_data['expire_date']
+
+        print(f"Attempting to save instance: {instance.__dict__}")  # دیباگ
+
+        if commit :
+            try :
+                with transaction.atomic() :
+                    instance.save()
+                    print("Instance saved successfully!")  # دیباگ
+                    if hasattr(self, 'save_m2m') :
+                        self.save_m2m()
+                    return instance
+            except Exception as e :
+                logger.error(f"Save failed: {str(e)}", exc_info = True)
+                print(f"Save error: {str(e)}")  # دیباگ
+                raise
+        return instance
+
+
+
+

@@ -27,9 +27,10 @@ DEBUG = True
 CSRF_TRUSTED_ORIGINS = [
     "https://appaweb.ir",
     "https://www.appaweb.ir",
+
 ]
 
-ALLOWED_HOSTS = ["appaweb.ir", "www.appaweb.ir"]
+ALLOWED_HOSTS = ["appaweb.ir", "www.appaweb.ir",'127.0.0.1']
 
 
 # Application definition

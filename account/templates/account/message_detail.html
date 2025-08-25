@@ -1,0 +1,21 @@
+{% extends 'account/base.html' %}
+{% block content %}
+<div class="container" style="font-family: Sahel;">
+    <h2 class="my-4">جزئیات پیام</h2>
+    <div class="card">
+        <div class="card-header">
+            <strong>موضوع:</strong> {{ message.subject }}
+        </div>
+        <div class="card-body">
+            <p><strong>نام:</strong> {{ message.full_name }}</p>
+            <p><strong>ایمیل:</strong> {{ message.email }}</p>
+            <p><strong>شماره تماس:</strong> {{ message.phone }}</p>
+            <p><strong>تاریخ:</strong> {{ message.created_at|date:"Y/m/d H:i" }}</p>
+            <p><strong>وضعیت:</strong> {{ message.get_status_display }}</p>
+            <hr>
+            <p><strong>متن پیام:</strong></p>
+            <p>{{ message.message }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

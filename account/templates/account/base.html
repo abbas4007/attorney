@@ -1,0 +1,173 @@
+{% load static %}
+{% load custom_filters %}
+<!DOCTYPE html>
+<html>
+{% block headers %}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{% block title-meta %}عنوان صفحه{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'registration/adminlte/plugins/fontawesome-free/css/all.min.css' %}">
+
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="{% static 'registration/adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
+
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{% static 'registration/adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="{% static 'registration/adminlte/plugins/jqvmap/jqvmap.min.css' %}">
+
+  <!-- AdminLTE theme -->
+  <link rel="stylesheet" href="{% static 'registration/adminlte/assets/css/adminlte.min.css' %}">
+
+  <!-- OverlayScrollbars -->
+  <link rel="stylesheet" href="{% static 'registration/adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
+
+  <!-- Daterangepicker -->
+  <link rel="stylesheet" href="{% static 'registration/adminlte/plugins/daterangepicker/daterangepicker.css' %}">
+        <link rel="stylesheet" href="{% static 'css/ckeditor-custom.css' %}">
+
+  <!-- Summernote -->
+  <link rel="stylesheet" href="{% static 'registration/adminlte/plugins/summernote/summernote-bs4.css' %}">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <!-- Bootstrap RTL -->
+  <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="{% static 'registration/adminlte/assets/css/custom.css' %}">
+
+  <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+  <style>
+    @font-face {
+        font-family: 'Sahel';
+        src: url('{% static "font/Sahel.ttf" %}') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+  </style>
+</head>
+{% endblock %}
+
+{% block content %}
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{% url 'account:home' %}" class="nav-link">صفحه اصلی</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="{% url 'home:home' %}" target="_blank" class="nav-link">نمایش سایت</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav mr-auto-navbav"></ul>
+  </nav>
+  <!-- /.navbar -->
+
+  {% include 'inc/sidebar.html' %}
+
+  <!-- Content Wrapper -->
+  <div class="content-wrapper">
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">{% block title %}عنوان صفحه{% endblock %}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="content">
+      <div class="container-fluid">
+        {% block main %}
+        {% endblock %}
+      </div>
+    </section>
+  </div>
+
+  <footer class="main-footer text-center">
+    <strong class="mr-4">کانون وکلای دادگستری استان همدان</strong>
+  </footer>
+
+  <aside class="control-sidebar control-sidebar-dark"></aside>
+</div>
+
+<!-- ==== اسکریپت‌ها ==== -->
+
+<!-- jQuery -->
+<script src="{% static 'registration/adminlte/plugins/jquery/jquery.min.js' %}"></script>
+
+<!-- jQuery UI -->
+<script src="{% static 'registration/adminlte/plugins/jquery-ui/jquery-ui.min.js' %}"></script>
+<script>$.widget.bridge('uibutton', $.ui.button)</script>
+
+<!-- Bootstrap -->
+<script src="{% static 'registration/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Moment -->
+<script src="{% static 'registration/adminlte/plugins/moment/moment.min.js' %}"></script>
+<script src="{% static 'registration/adminlte/plugins/moment/moment-with-locales.min.js' %}"></script>
+
+<!-- Daterangepicker -->
+<script src="{% static 'registration/adminlte/plugins/daterangepicker/daterangepicker.js' %}"></script>
+
+<!-- Sparklines & JQVMap -->
+<script src="{% static 'registration/adminlte/plugins/sparklines/sparkline.js' %}"></script>
+<script src="{% static 'registration/adminlte/plugins/jqvmap/jquery.vmap.min.js' %}"></script>
+<script src="{% static 'registration/adminlte/plugins/jqvmap/maps/jquery.vmap.world.js' %}"></script>
+
+<!-- Summernote -->
+<script src="{% static 'registration/adminlte/plugins/summernote/summernote-bs4.min.js' %}"></script>
+
+<!-- jQuery Knob (از CDN چون فایلت 404 می‌ده) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-knob/1.2.13/jquery.knob.min.js"></script>
+
+<!-- AdminLTE -->
+<script src="{% static 'registration/adminlte/assets/js/adminlte.min.js' %}"></script>
+
+<!-- Dashboard Scripts -->
+<script src="{% static 'registration/adminlte/assets/js/pages/dashboard.js' %}"></script>
+
+<!-- Demo -->
+<script src="{% static 'registration/adminlte/assets/js/demo.js' %}"></script>
+
+<!-- Treeview JS (در صورت نیاز) -->
+<script>
+  $(function () {
+    try {
+      $(".knob").knob(); // اطمینان از اجرای صحیح
+    } catch (e) {
+      console.warn("knob load error:", e);
+    }
+
+    try {
+      $('[data-widget="treeview"]').treeview();
+    } catch (e) {
+      console.warn("treeview load error:", e);
+    }
+  });
+</script>
+
+{% endblock %}
+{% block extra_js %}
+{% endblock %}
+</body>
+</html>

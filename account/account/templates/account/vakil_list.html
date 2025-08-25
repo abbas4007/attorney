@@ -1,0 +1,153 @@
+{% extends 'account/base.html' %}
+{% load static %}
+{% load custom_filters %}
+{% block title %}{% block title-meta %}
+لیست وکلا
+{% endblock %}{% endblock %}
+
+{% block main %}
+    <style>
+       @font-face {
+        font-family: 'Sahel';
+        src: url('{% static "font/Sahel.ttf" %}') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+    /* اعمال فونت ساحل به کل جدول و عناصر */
+    body, .card-title, .card-header h3, table, .btn, .alert, .pagination, .form-control {
+        font-family: Sahel, sans-serif !important;
+    }
+</style>
+<div class="row">
+    <div class="col-12">
+        <!-- فرم جستجو -->
+        <div class="card mb-3">
+            <div class="card-header">
+                <h3 class="card-title" style="font-family: Sahel;">جستجوی وکیل</h3>
+            </div>
+            <div class="card-body">
+                <form method="get" action="{% url 'account:vakil_list' %}">
+                        {% csrf_token %}
+
+                    <div class="input-group">
+                        <input type="text" name="search" class="form-control" placeholder="جستجو بر اساس نام، نام خانوادگی، شهر یا آدرس..." value="{{ request.GET.search }}">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-search"></i> جستجو
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        {% if object_list %}
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title" style="font-family: Sahel;">لیست وکلا</h3>
+                <a class="btn btn-warning" href="{% url 'account:upload_excel' %}"> بارگزاری فایل اکسل</a>
+                <a class="btn btn-info" href="{% url 'account:assign_thumbnails' %}"> بارگزاری عکس ها </a>
+                 <form method="post" action="{% url 'home:delete_all_vakils' %}" onsubmit="return confirm('آیا مطمئن هستید که می‌خواهید همه وکلا را حذف کنید؟');">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger btn-sm">
+            <i class="fas fa-trash-alt"></i> حذف همه وکلا
+        </button>
+    </form>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>نام وکیل</th>
+                            <th>نام خانوادگی</th>
+                            <th>آدرس</th>
+                            <th>عکس</th>
+                            <th>شهر</th>
+                            <th>عملیات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for a in object_list %}
+                        <tr>
+                            <td>
+                                <a href="{% url 'account:vakil_add' %}">
+                                    <p class="mb-0">{{a.name}}</p>
+                                </a>
+                            </td>
+                            <td>{{a.lastname|escape|clean_html}}</td>
+                            <td>{{a.address|clean_html|escape|truncatechars:20|safe}}</td>
+                            <td>
+                              <img src="{% if a.thumbnail %}{{ a.thumbnail.url|escape }}{% else %}
+{% static 'default_avatar.png' %}
+{% endif %}"
+     class="img-thumbnail"
+     width="120"
+     alt="عکس وکیل">
+
+                                {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <button type="submit" class="btn btn-sm btn-secondary " style="width: 120px;">
+                                        <a href="{% url 'account:image_upload' a.id %}" class="text-white">تغییر عکس</a>
+                                    </button>
+                                </form>
+                            </td>
+                            <td>{{a.city|clean_html|escape}}</td>
+                            <td>
+                                <a href="{% url 'account:vakil_edit' a.pk %}"
+                                   class="btn btn-sm btn-info mb-1">
+                                   <i class="fas fa-edit"></i> ویرایش
+                                </a>
+                                <a href="{% url 'account:vakil_delete' a.pk %}"
+                                   class="btn btn-sm btn-danger"
+                                   onclick="return confirm('آیا از حذف این وکیل مطمئن هستید؟')">
+                                   <i class="fas fa-trash"></i> حذف
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+
+            <!-- Pagination Section -->
+            <div class="card-footer clearfix">
+                <ul class="pagination pagination-sm m-0 float-right">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page=1&search={{ request.GET.search }}">&laquo; اولین</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}&search={{ request.GET.search }}">قبلی</a>
+                        </li>
+                    {% endif %}
+
+                    <li class="page-item disabled">
+                        <span class="page-link">
+                            صفحه {{ page_obj.number }} از {{ page_obj.paginator.num_pages }}
+                        </span>
+                    </li>
+
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}&search={{ request.GET.search }}">بعدی</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}&search={{ request.GET.search }}">آخرین &raquo;</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+            <!-- End Pagination -->
+        </div>
+        <!-- /.card -->
+        {% else %}
+        <div class="alert alert-warning text-center">
+            <h4 class="alert-heading">هشدار!</h4>
+            <p class="mb-0">هیچ وکیلی برای نمایش وجود ندارد.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
