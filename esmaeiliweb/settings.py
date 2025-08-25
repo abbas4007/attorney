@@ -24,8 +24,12 @@ SECRET_KEY = 'django-insecure-jhp_7#trsg@9kuk%=*p#_b9q=67(tv119fr_*3@%lgxn-(i97o
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+CSRF_TRUSTED_ORIGINS = [
+    "https://appaweb.ir",
+    "https://www.appaweb.ir",
+]
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["appaweb.ir", "www.appaweb.ir"]
 
 
 # Application definition
@@ -38,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "home.apps.HomeConfig",
-    "account.apps.AccountConfig",
+    "account",
     "extentions",
     'crispy_forms',
     "crispy_bootstrap5",
@@ -82,10 +86,15 @@ WSGI_APPLICATION = 'esmaeiliweb.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': os.getenv("DB_ENGINE"),
+        'NAME': os.getenv("DB_DATABASE"),
+        'USER': os.getenv("DB_USERNAME"),
+        'PASSWORD': os.getenv("DB_PASSWORD"),
+        'HOST': os.getenv("DB_HOST"),
+        'PORT':  os.getenv("DB_PORT"),
     }
 }
+
 
 
 # Password validation
@@ -123,10 +132,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
