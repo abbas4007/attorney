@@ -30,7 +30,7 @@ CSRF_TRUSTED_ORIGINS = [
 
 ]
 
-ALLOWED_HOSTS = ["appaweb.ir", "www.appaweb.ir",'127.0.0.1']
+ALLOWED_HOSTS = ["appaweb.ir", "www.appaweb.ir",'127.0.0.1',"*", ".liara.run"]
 
 
 # Application definition
