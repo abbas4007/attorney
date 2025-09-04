@@ -146,3 +146,19 @@ AUTH_USER_MODEL = 'account.User'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+QUILL_CONFIGS = {
+    'default': {
+        'theme': 'snow',
+        'modules': {
+            'toolbar': [
+                ['bold', 'italic', 'underline'],
+                [{'list': 'ordered'}, {'list': 'bullet'}],
+                ['link', 'image'],
+            ]
+        }
+    }
+}
+
+LOGIN_REDIRECT_URL = 'account:home'
+

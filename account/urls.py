@@ -6,6 +6,7 @@ from django.conf.urls import include
 from .views import (
     ArticleList,
     article_create_view,
+    CustomLoginView,
     ArticleUpdate,
     ArticleDelete,CategoryListView,CategoryCreateView,CategoryUpdateView,CategoryDeleteView,MessageUpdateView,MessageListView,delete_article_image,MessageDetailView
 )
@@ -14,7 +15,8 @@ app_name = 'account'
 
 urlpatterns = [
 	path('', ArticleList.as_view(), name="home"),
-	path('article/create/', article_create_view, name="create_article"),
+    path('login/', CustomLoginView.as_view(), name = 'login'),
+    path('article/create/', article_create_view, name="create_article"),
     path('article/update/<int:pk>', ArticleUpdate.as_view(), name="article_update"),
 	path('article/delete/<int:pk>', ArticleDelete.as_view(), name="article_delete"),
     path('messages/', MessageListView.as_view(), name = 'message_list'),

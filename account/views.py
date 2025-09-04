@@ -61,8 +61,9 @@ class MessageUpdateView(LoginRequiredMixin, UpdateView):
 class CustomLoginView(LoginView):
     template_name = 'account/login.html'
     redirect_authenticated_user = True
-    success_url = reverse_lazy('account:home')
 
+    def get_success_url(self):
+        return reverse_lazy('account:home')
 
 # --- مقاله ---
 class ArticleList(LoginRequiredMixin, ListView):

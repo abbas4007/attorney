@@ -4,7 +4,7 @@
     {% block headers %}
 
   <head>
-    <title>فتانه اسماعیلی|وکیل پایه یک دادگستر</title>
+    <title> حمید به گذر|وکیل پایه یک دادگستری</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -31,6 +31,165 @@
       body {
         font-family: Sahel !important;
       }
+  /* استایل عمومی فوتر */
+.ftco-footer {
+  padding: 60px 0;
+  background: #1a1a1a;
+  color: #fff;
+}
+
+/* لوگو و متن */
+.ftco-footer .logo a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: bold;
+}
+.ftco-footer .logo a span {
+  font-size: 14px;
+  font-weight: normal;
+}
+.ftco-footer p {
+  color: #ccc;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* آیکون‌های شبکه اجتماعی */
+.ftco-footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 0;
+}
+.ftco-footer-social li {
+  list-style: none;
+}
+.ftco-footer-social li a {
+  color: #fff;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+.ftco-footer-social li a:hover {
+  color: #f0ad4e;
+}
+
+/* نقشه */
+.ftco-footer iframe {
+  width: 100%;
+  height: 250px;
+  border-radius: 8px;
+}
+
+/* بک‌تو-تاپ */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #f0ad4e;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 50px;
+  z-index: 1000;
+}
+.back-to-top i {
+  font-size: 24px;
+  color: #fff;
+}
+
+/* متن طراح */
+.ftco-footer .designer {
+  font-size: 14px;
+  color: #aaa;
+  margin-top: 25px;
+}
+
+/* استایل برای موبایل */
+@media (max-width: 767px) {
+  .ftco-footer .row.mb-5 {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .ftco-footer .col-md-4 {
+    margin-bottom: 30px;
+    width: 100%;
+  }
+
+  .ftco-footer iframe {
+    height: 200px; /* کوچکتر برای موبایل */
+  }
+
+  .ftco-footer-social {
+    justify-content: center;
+  }
+}
+
+     
+.ftco_navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between; /* فاصله بین لوگو و دکمه همبرگری */
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.navbar-brand {
+  margin-left: 15px; /* فاصله از سمت چپ برای لوگو */
+  text-align: center;
+}
+
+.navbar-toggler {
+  margin-right: 15px; /* فاصله از سمت راست برای دکمه همبرگری */
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.nav-item {
+  margin: 0 15px; /* فاصله بین آیتم‌های منو */
+}
+
+@media (max-width: 991px) {
+  .container {
+    justify-content: space-between; /* اطمینان از فاصله بین لوگو و دکمه در موبایل */
+  }
+
+  .navbar-brand {
+    margin-left: 10px; /* فاصله کمتر در موبایل */
+  }
+
+  .navbar-toggler {
+    margin-right: 10px; /* فاصله کمتر در موبایل */
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    text-align: center;
+    margin-top: 10px; /* فاصله عمودی برای منوی بازشده */
+  }
+
+  .nav-item {
+    margin: 10px 0; /* فاصله عمودی بین آیتم‌ها در منوی موبایل */
+  }
+}
+      @media (max-width: 767px) {
+  .col-md-6.ftco-animate {
+    text-align: center;
+  }
+}
     </style>
   
   </head>
@@ -38,36 +197,33 @@
   {% block content %}
   <body>
 
-	  <nav class=" navbar px-md-0 navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" style="text-align: center; justify-content: center">
-	    <div class="container">
-	      <a class="navbar-brand" href="index.html" >فتانه اسماعیلی <span>    وکیل پایه یک دادگستری</span></a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
-
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item active"><a href="#" class="nav-link">صفحه اصلی</a></li>
-	          <li class="nav-item"><a href="#about" class="nav-link">درباره من</a></li>
-	          <li class="nav-item"><a href="#services" class="nav-link"> خدمات حقوقی</a></li>
-	          <li class="nav-item"><a href="#articles" class="nav-link">مقالات</a></li>
-	          <li class="nav-item"><a href="#question" class="nav-link">سوالات متداول</a></li>
-	         <li class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-    مشاوره رایگان
-  </li>
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
-    <!-- END nav -->
-
-    <div class="hero-wrap js-fullheight" style='background-image: url("static/images/esi.jpg"); ' class=" align-items-center justify-content-center" data-stellar-background-ratio="0.5">
+<nav class="navbar px-md-0 navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+  <div class="container d-flex align-items-center">
+    <a class="navbar-brand" href="index.html">حمید به گذر <span>وکیل پایه یک دادگستری</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="oi oi-menu"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item active"><a href="#" class="nav-link">صفحه اصلی</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link">درباره من</a></li>
+        <li class="nav-item"><a href="#services" class="nav-link">خدمات حقوقی</a></li>
+        <li class="nav-item"><a href="#articles" class="nav-link">مقالات</a></li>
+        <li class="nav-item"><a href="#question" class="nav-link">سوالات متداول</a></li>
+        <li class="nav-item">
+          <a class="nav-link btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">مشاوره رایگان</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+    <div class="hero-wrap js-fullheight" style='background-image: url("static/assets/images/beh.jpg"); ' class=" align-items-center justify-content-center" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
           <div class="col-md-6 ftco-animate">
-          	<p class="subheading" style="font-size: 40px;">به وب سایت من خوش آمدید</p>
-          	<p style="font-weight: bold;">وکلا برای
+          	<p class="subheading" style="font-size: 40px; font-family: Sahel;">به وب سایت من خوش آمدید</p>
+          	<p style="font-weight: bold; font-family: Sahel;">وکلا برای
 						  <span
 						     class="txt-rotate " style="direction: rtl; font-weight:bold;"
 						     data-period="2000"
@@ -75,7 +231,7 @@
 							 <p style="font-weight: bold;">می جنگند</p>
 			</p>
             <!-- <h1 class="mb-4">Attorneys Fighting For Your Freedom</h1> -->
-            <p class="mb-4" style="font-size: 30px;">وکیل  فتانه اسماعیلی  کارشناس ارشد حقوق دانشگاه تهران، همواره در تلاش است تا دسترسی آسان به خدمات حقوقی را برای شما فراهم کند.
+            <p class="mb-4" style="font-size: 30px;">وکیل  حمید به گذر  کارشناس ارشد حقوق ، همواره در تلاش است تا دسترسی آسان به خدمات حقوقی را برای شما فراهم کند.
 
 			</p>
           </div>
@@ -199,13 +355,13 @@
 									</ul>
 									<div class="tab-content bg-light rounded mt-2">
 									  <div class="tab-pane container p-0 active" id="home1">
-										<p> موسسه حقوقی دادگستر با مدیریت خانم فتانه اسماعیلی وکیل پایه یک دادگستری با تکیه بر تجربه و دانش حقوقی، به حل مشکلات شما می پردازد. خدمات ما شامل: </p>
+										<p> موسسه حقوقی دادگستر با مدیریت آقای حمید به گذر  وکیل پایه یک دادگستری با تکیه بر تجربه و دانش حقوقی، به حل مشکلات شما می پردازد. خدمات ما شامل: </p>
 									</div>
 									  <div class="tab-pane container p-0 fade" id="home2">
-										<p> موسسه حقوقی دادگستر با مدیریت خانم فتانه اسماعیلی وکیل پایه یک دادگستری با تکیه بر تجربه و دانش حقوقی، به حل مشکلات شما می پردازد. خدمات ما شامل: </p>
+										<p> موسسه حقوقی دادگستر با مدیریت آقای حمید به گذر وکیل پایه یک دادگستری با تکیه بر تجربه و دانش حقوقی، به حل مشکلات شما می پردازد. خدمات ما شامل: </p>
 									</div>
 									  <div class="tab-pane container p-0 fade" id="home3">
-										<p> موسسه حقوقی دادگستر با مدیریت خانم فتانه اسماعیلی وکیل پایه یک دادگستری با تکیه بر تجربه و دانش حقوقی، به حل مشکلات شما می پردازد. خدمات ما شامل: </p>
+										<p> موسسه حقوقی دادگستر با مدیریت آقای حمید به گذر وکیل پایه یک دادگستری با تکیه بر تجربه و دانش حقوقی، به حل مشکلات شما می پردازد. خدمات ما شامل: </p>
 									</div>
 									</div>
 								</div>
@@ -365,35 +521,61 @@
 
 
 
-	<footer class="ftco-footer ftco-bg-dark ftco-section">
-		<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-		<div class="container">
-		  <div class="row mb-5">
-			<div class="col-md">
-			  <div class="ftco-footer-widget mb-4">
-				<h2 class="logo"><a href="#">فتانه اسماعیلی <span>وکیل بایه یک دادگستری</span></a></h2>
-				<p>همدان- بلوار مدنی- روبروی بانک رسالت - ساختمان کسری- طبقه 2.</p>
-				<h2 class="logo"><a href="#">  <span> شماره تماس: </span></a></h2>
-				<p>09183135508</p>
-				<h2 class="logo"><a href="#">  <span>  شماره تماس دفتر: </span></a></h2>
-				<p>38271819</p>
-				<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-				  <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-				  <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-				  <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-				</ul>
-			  </div>
-			</div>
+<footer class="ftco-footer ftco-bg-dark ftco-section">
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+  </a>
+  <div class="container">
 
-			<div class="col-md" style="align-items: center; margin-right: 10px;" data-aos="zoom-in">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4397.337993677362!2d48.52349801051959!3d34.792725812147374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ff1ed0019f0027f%3A0xd42485fca32f027a!2z2K_Zgdiq2LEg2Yjaqdin2YTYqiDZgdiq2KfZhtmHINin2LPZhdin2LnbjNmE24w!5e1!3m2!1sfa!2s!4v1732889917368!5m2!1sfa!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>				 </div>
-		  </div>
-		</div>
-	  </footer>
+    <!-- ردیف اول: سه ستون اصلی -->
+    <div class="row mb-5">
+      <!-- ستون مشخصات -->
+      <div class="col-md-4 col-12">
+        <div class="ftco-footer-widget mb-4">
+          <h2 class="logo"><a href="#">حمید به گذر <span>وکیل پایه یک دادگستری</span></a></h2>
+          <p>تهران.</p>
+          <h2 class="logo"><a href="#"><span>شماره تماس:</span></a></h2>
+          <p>09183135508</p>
+          <h2 class="logo"><a href="#"><span>شماره تماس دفتر:</span></a></h2>
+          <p>38271819</p>
+          <ul class="ftco-footer-social list-unstyled mt-5">
+            <li><a href="#"><span class="bi bi-twitter"></span></a></li>
+            <li><a href="#"><span class="bi bi-facebook"></span></a></li>
+            <li><a href="#"><span class="bi bi-instagram"></span></a></li>
+          </ul>
+        </div>
+      </div>
 
+      <!-- ستون نقشه -->
+      <div class="col-md-4 col-12">
+        <div class="ftco-footer-widget mb-4">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4397.337993677362!2d48.52349801051959!3d34.792725812147374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ff1ed0019f0027f%3A0xd42485fca32f027a!2z2K_Zgdiq2LEg2Yjaqdin2YTYqiDZgdiq2KfZhtmHINin2LPZhdin2LnbjNmE24w!5e1!3m2!1sfa!2s!4v1732889917368!5m2!1sfa!2s" 
+                  style="border:0; width: 100%; height: 250px;" 
+                  allowfullscreen="" loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
 
+      <!-- ستون ساعات کاری -->
+      <div class="col-md-4 col-12">
+        <div class="ftco-footer-widget mb-4">
+          <h2 class="logo"><a href="#">ساعات کاری</a></h2>
+          <p>شنبه تا چهارشنبه: ۹ صبح تا ۵ عصر</p>
+          <p>پنج‌شنبه: ۹ صبح تا ۱ ظهر</p>
+          <p>جمعه و تعطیلات: تعطیل</p>
+        </div>
+      </div>
+    </div>
 
-  <!-- loader -->
+    <!-- ردیف دوم: طراح -->
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <p class="designer">طراحی و پیاده‌سازی: عباس اسماعیلی</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
