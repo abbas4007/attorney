@@ -32,10 +32,9 @@
 
   <!-- Daterangepicker -->
   <link rel="stylesheet" href="{% static 'registration/adminlte/plugins/daterangepicker/daterangepicker.css' %}">
-        <link rel="stylesheet" href="{% static 'css/ckeditor-custom.css' %}">
 
   <!-- Summernote -->
-  <link rel="stylesheet" href="{% static 'registration/adminlte/plugins/summernote/summernote-bs4.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs4.min.css">
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -46,6 +45,7 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{% static 'registration/adminlte/assets/css/custom.css' %}">
+  <link rel="stylesheet" href="{% static 'css/ckeditor-custom.css' %}">
 
   <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
 
@@ -113,14 +113,14 @@
 <!-- ==== اسکریپت‌ها ==== -->
 
 <!-- jQuery -->
-<script src="{% static 'registration/adminlte/plugins/jquery/jquery.min.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
 
 <!-- jQuery UI -->
 <script src="{% static 'registration/adminlte/plugins/jquery-ui/jquery-ui.min.js' %}"></script>
 <script>$.widget.bridge('uibutton', $.ui.button)</script>
 
 <!-- Bootstrap -->
-<script src="{% static 'registration/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Moment -->
 <script src="{% static 'registration/adminlte/plugins/moment/moment.min.js' %}"></script>
@@ -134,30 +134,10 @@
 <script src="{% static 'registration/adminlte/plugins/jqvmap/jquery.vmap.min.js' %}"></script>
 <script src="{% static 'registration/adminlte/plugins/jqvmap/maps/jquery.vmap.world.js' %}"></script>
 
-<!-- Summernote -->
-<script src="{% static 'registration/adminlte/plugins/summernote/summernote-bs4.min.js' %}"></script>
-
-<!-- jQuery Knob (از CDN چون فایلت 404 می‌ده) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-knob/1.2.13/jquery.knob.min.js"></script>
-
-<!-- AdminLTE -->
-<script src="{% static 'registration/adminlte/assets/js/adminlte.min.js' %}"></script>
-
-<!-- Dashboard Scripts -->
-<script src="{% static 'registration/adminlte/assets/js/pages/dashboard.js' %}"></script>
-
-<!-- Demo -->
-<script src="{% static 'registration/adminlte/assets/js/demo.js' %}"></script>
-<!-- jQuery -->
-
-<!-- Bootstrap (نسخه متناسب با AdminLTE) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
 <!-- jQuery Knob -->
 <script src="https://cdn.jsdelivr.net/npm/jquery-knob@1.2.13/dist/jquery.knob.min.js"></script>
 
 <!-- Summernote -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs4.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs4.min.js"></script>
 
 <!-- Quill (اختیاری) -->
@@ -170,14 +150,14 @@
 <!-- AdminLTE -->
 <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
 
-<!-- فایل‌های سفارشی شما -->
+<!-- Dashboard Scripts -->
 <script src="{% static 'registration/adminlte/assets/js/pages/dashboard.js' %}"></script>
 
-<!-- Treeview JS (در صورت نیاز) -->
+<!-- Init Plugins -->
 <script>
   $(function () {
     try {
-      $(".knob").knob(); // اطمینان از اجرای صحیح
+      $(".knob").knob();
     } catch (e) {
       console.warn("knob load error:", e);
     }
@@ -186,6 +166,12 @@
       $('[data-widget="treeview"]').treeview();
     } catch (e) {
       console.warn("treeview load error:", e);
+    }
+
+    try {
+      $('.summernote').summernote();
+    } catch (e) {
+      console.warn("summernote load error:", e);
     }
   });
 </script>
