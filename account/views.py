@@ -14,50 +14,11 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 import requests
 from home.models import Article, ArticleImage, ArticleFile, Category
-from .forms import ContactForm, ArticleForm,CategoryForm
+from .forms import ArticleForm,CategoryForm
 from .models import ContactMessage
 from captcha.models import CaptchaStore
 from captcha.helpers import captcha_image_url
 from django.http import JsonResponse
-
-# --- تماس با ما ---
-@csrf_exempt
-def contact_view(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            message = form.save()
-            try:
-                response = requests.post(
-                    "https://api.ghasedak.me/v2/sms/send/simple",
-                    data={
-                        "message": f"پیام شما با شماره پیگیری {message.id} دریافت شد",
-                        "receptor": message.phone,
-                        "linenumber": settings.SMS_LINE_NUMBER
-                    },
-                    headers={
-                        "apikey": settings.GHASEDAK_API_KEY,
-                        "Content-Type": "application/x-www-form-urlencoded"
-                    },
-                    timeout=10
-                )
-            except requests.exceptions.RequestException as e:
-                print("SMS Error:", str(e))
-            return redirect('account:success_page')
-    else:
-        form = ContactForm()
-    return render(request, 'account/contact.html', {'form': form})
-
-def refresh_captcha(request):
-    new_key = CaptchaStore.generate_key()
-    to_json_response = {
-        'key': new_key,
-        'image_url': captcha_image_url(new_key),
-    }
-    return JsonResponse(to_json_response)
-
-def success_page(request):
-    return render(request, 'account/success.html')
 
 
 # --- مدیریت پیام‌ها ---

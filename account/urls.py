@@ -7,8 +7,7 @@ from .views import (
     ArticleList,
     article_create_view,
     ArticleUpdate,
-    ArticleDelete, CustomLoginView,CategoryListView,CategoryCreateView,CategoryUpdateView,CategoryDeleteView,
-    success_page,MessageUpdateView,MessageListView,delete_article_image,refresh_captcha,MessageDetailView
+    ArticleDelete, CustomLoginView,CategoryListView,CategoryCreateView,CategoryUpdateView,CategoryDeleteView,delete_article_image
 )
 app_name = 'account'
 

@@ -8,7 +8,6 @@ from django.core.exceptions import ValidationError
 from django.db.utils import IntegrityError
 from django import forms
 from .models import ContactMessage
-from captcha.fields import CaptchaField
 import jdatetime
 import logging
 
@@ -16,15 +15,6 @@ logger = logging.getLogger(__name__)
 
 
 
-class ContactForm(forms.ModelForm):
-    captcha = CaptchaField(label = "کد امنیتی")
-
-    class Meta :
-        model = ContactMessage
-        fields = ['full_name', 'phone', 'subject', 'message', 'captcha']
-        widgets = {
-            'message' : forms.Textarea(attrs = {'rows' : 5}),
-        }
 
 
 
