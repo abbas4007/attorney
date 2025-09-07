@@ -5,22 +5,10 @@ from django.conf.urls import include
 
 from .views import (
     ArticleList,
-    KarAmoozList,
     article_create_view,
     ArticleUpdate,
-    ArticleDelete,
-    AddVakil,
-    vakileList,
-    Riyasatlist,
-    vakil_image_view,
-    add_comision,
-    KarAmoozUpdateView,
-    search_vakils,
-    assign_karamooz_thumbnails,
-    karamooz_image_view,
-    assign_thumbnails,
-    AddKarAmooz, CustomLoginView, ComisionView, VakilUpdateView, VakilDeleteView, RiyasatDeleteView,CategoryListView,CategoryCreateView,CategoryUpdateView,CategoryDeleteView,
-    add_riyasat, comision_edit, comision_delete, KarAmoozDeleteView,success_page,MessageUpdateView,MessageListView,delete_article_image,refresh_captcha,MessageDetailView
+    ArticleDelete, CustomLoginView,CategoryListView,CategoryCreateView,CategoryUpdateView,CategoryDeleteView,
+    success_page,MessageUpdateView,MessageListView,delete_article_image,refresh_captcha,MessageDetailView
 )
 app_name = 'account'
 
