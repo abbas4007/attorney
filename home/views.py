@@ -7,17 +7,25 @@ from .models import Article, Parvandeh
 # Create your views here.
 
 
-class HomeView(View) :
-    def get(self, request) :
-        articles = Article.objects.all()
-        parvandeh = Parvandeh.objects.all()
+class HomeView(View):
+    def get(self, request):
+        articles = Article.objects.all().order_by('-publish')  # جدیدترین‌ها اول
+        parvandeh = Parvandeh.objects.all().order_by('-id')    # یا created_at اگر داری
+
         paginator = Paginator(articles, 6)
         paginatorr = Paginator(parvandeh, 3)
+
         page_number = request.GET.get("page")
         page_numberr = request.GET.get("page")
+
         page_obj = paginator.get_page(page_number)
         page_objj = paginatorr.get_page(page_numberr)
-        return render(request, 'home/home.html', context = {"page_obj": page_obj,'page_objj':page_objj})
+
+        return render(
+            request,
+            'home/home.html',
+            context={"page_obj": page_obj, 'page_objj': page_objj}
+        )
 
 class ArticleDetail(View):
     def get(self,request,id):
