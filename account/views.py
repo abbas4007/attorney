@@ -1,13 +1,10 @@
-import os
 
 from django.contrib import messages
 from django.contrib.auth.views import LoginView
 from django.db.models import Q
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views import View
-from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_POST, require_GET
+from django.views.decorators.http import require_POST
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -16,8 +13,6 @@ import requests
 from home.models import Article, ArticleImage, ArticleFile, Category
 from .forms import ArticleForm,CategoryForm
 from .models import ContactMessage
-from captcha.models import CaptchaStore
-from captcha.helpers import captcha_image_url
 from django.http import JsonResponse
 
 
