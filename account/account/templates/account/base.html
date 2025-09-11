@@ -1,57 +1,41 @@
 {% load static %}
 {% load custom_filters %}
-<link rel="stylesheet" href="{% static 'css/adminlte/assets/css/adminlte.min.css' %}">
-<script src="{% static 'registration/adminlte/plugins/jquery/jquery.min.js' %}"></script>
-
 <!DOCTYPE html>
-<html>
-{% block headers %}
+<html lang="fa">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>{% block title-meta %}عنوان صفحه{% endblock %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- ===================== CSS ===================== -->
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{% static 'registration/adminlte/plugins/fontawesome-free/css/all.min.css' %}">
-
   <!-- Ionicons -->
   <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
-
-  <!-- Tempusdominus Bootstrap 4 -->
+  <!-- Tempusdominus -->
   <link rel="stylesheet" href="{% static 'registration/adminlte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css' %}">
-
   <!-- iCheck -->
   <link rel="stylesheet" href="{% static 'registration/adminlte/plugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
-
   <!-- JQVMap -->
   <link rel="stylesheet" href="{% static 'registration/adminlte/plugins/jqvmap/jqvmap.min.css' %}">
-
   <!-- AdminLTE theme -->
   <link rel="stylesheet" href="{% static 'registration/adminlte/assets/css/adminlte.min.css' %}">
-
   <!-- OverlayScrollbars -->
   <link rel="stylesheet" href="{% static 'registration/adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}">
-
   <!-- Daterangepicker -->
   <link rel="stylesheet" href="{% static 'registration/adminlte/plugins/daterangepicker/daterangepicker.css' %}">
-        <link rel="stylesheet" href="{% static 'css/ckeditor-custom.css' %}">
-
   <!-- Summernote -->
   <link rel="stylesheet" href="{% static 'registration/adminlte/plugins/summernote/summernote-bs4.css' %}">
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
   <!-- Bootstrap RTL -->
   <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-
   <!-- Custom CSS -->
   <link rel="stylesheet" href="{% static 'registration/adminlte/assets/css/custom.css' %}">
-
+  <!-- Favicon -->
   <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
 
+  <!-- ===================== Fonts ===================== -->
   <style>
     @font-face {
         font-family: 'Sahel';
@@ -59,11 +43,22 @@
         font-weight: normal;
         font-style: normal;
     }
+    @font-face {
+        font-family: 'B Titr';
+        src: url('{% static "font/BTitr.ttf" %}') format('ttf'),
+             url('{% static "font/BTitr.ttf" %}') format('ttf');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+    body {
+        font-family: 'B Titr', 'Sahel', sans-serif;
+    }
   </style>
-</head>
-{% endblock %}
 
-{% block content %}
+  {% block headers %}{% endblock %}
+</head>
+
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
@@ -100,8 +95,7 @@
 
     <section class="content">
       <div class="container-fluid">
-        {% block main %}
-        {% endblock %}
+        {% block main %}{% endblock %}
       </div>
     </section>
   </div>
@@ -113,117 +107,82 @@
   <aside class="control-sidebar control-sidebar-dark"></aside>
 </div>
 
-<!-- ==== اسکریپت‌ها ==== -->
-
+<!-- ===================== JS ===================== -->
 <!-- jQuery -->
 <script src="{% static 'registration/adminlte/plugins/jquery/jquery.min.js' %}"></script>
-
 <!-- jQuery UI -->
 <script src="{% static 'registration/adminlte/plugins/jquery-ui/jquery-ui.min.js' %}"></script>
 <script>$.widget.bridge('uibutton', $.ui.button)</script>
-
 <!-- Bootstrap -->
 <script src="{% static 'registration/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
-<!-- Moment (فقط یک بار) -->
+<!-- Moment -->
 <script src="{% static 'registration/adminlte/plugins/moment/moment-with-locales.min.js' %}"></script>
-
 <!-- Daterangepicker -->
 <script src="{% static 'registration/adminlte/plugins/daterangepicker/daterangepicker.js' %}"></script>
-
-<!-- پلاگین‌ها -->
+<!-- Sparklines -->
 <script src="{% static 'registration/adminlte/plugins/sparklines/sparkline.js' %}"></script>
+<!-- JQVMap -->
 <script src="{% static 'registration/adminlte/plugins/jqvmap/jquery.vmap.min.js' %}"></script>
 <script src="{% static 'registration/adminlte/plugins/jqvmap/maps/jquery.vmap.world.js' %}"></script>
+<!-- Summernote -->
 <script src="{% static 'registration/adminlte/plugins/summernote/summernote-bs4.min.js' %}"></script>
+<!-- jQuery Knob -->
 <script src="{% static 'registration/adminlte/plugins/jquery-knob/jquery.knob.min.js' %}"></script>
-
 <!-- AdminLTE -->
 <script src="{% static 'registration/adminlte/assets/js/adminlte.min.js' %}"></script>
-
-<!-- Dashboard Scripts -->
+<!-- Dashboard -->
 <script src="{% static 'registration/adminlte/assets/js/pages/dashboard.js' %}"></script>
-
 <!-- Demo (اختیاری) -->
 <script src="{% static 'registration/adminlte/assets/js/demo.js' %}"></script>
 
-<!-- Init Custom -->
+<!-- ===================== Custom Init ===================== -->
 <script>
- // dashboard.js (نسخه اصلاح‌شده و safe)
-
 $(function () {
 
-    // ---------- jQuery Knob ----------
+    // Knob
     if ($.fn.knob) {
         $(".knob").each(function () {
-            try {
-                $(this).knob();
-            } catch (e) {
-                console.warn("Knob init error:", e);
-            }
+            try { $(this).knob(); } catch (e) { console.warn("Knob init error:", e); }
         });
     }
 
-    // ---------- Summernote ----------
-    if ($.fn.summernote && $('.textarea').length) {
-        $('.textarea').summernote({
-            height: 200, // می‌توانی تغییر بدهی
-        });
+    // Summernote
+    if ($('.textarea').length && $.fn.summernote) {
+        $('.textarea').summernote({ height: 200 });
     }
 
-    // ---------- Sparkline ----------
+    // Sparkline
     if ($.fn.sparkline) {
         $('#sparkline-1').each(function () {
-            try {
-                $(this).sparkline([5,6,7,2,0,-4,-2,4], { type: 'bar' });
-            } catch (e) {
-                console.warn("Sparkline init error:", e);
-            }
+            try { $(this).sparkline([5,6,7,2,0,-4,-2,4], { type: 'bar' }); }
+            catch(e){ console.warn("Sparkline init error:", e); }
         });
     }
 
-    // ---------- JQVMap ----------
-    if ($.fn.vectorMap && $('#world-map').length) {
+    // JQVMap
+    if ($('#world-map').length && $.fn.vectorMap) {
         try {
             var $map = $('#world-map');
             var w = parseInt($map.width()) || 600;
             var h = parseInt($map.height()) || 400;
-
             $map.vectorMap({
                 map: 'world_en',
                 backgroundColor: 'transparent',
                 width: w,
                 height: h,
-                series: {
-                    regions: [{
-                        values: {}, // داده‌ها را اینجا اضافه کن
-                        scale: ['#C8EEFF', '#0071A4'],
-                        normalizeFunction: 'polynomial'
-                    }]
-                },
+                series: { regions:[{ values:{}, scale:['#C8EEFF','#0071A4'], normalizeFunction:'polynomial' }] }
             });
-        } catch (e) {
-            console.warn("jqvmap init error:", e);
-        }
+        } catch(e){ console.warn("jqvmap init error:", e); }
     }
 
-    // ---------- Daterangepicker ----------
+    // Daterangepicker
     if ($.fn.daterangepicker) {
-        $('.daterange').each(function () {
-            $(this).daterangepicker();
-        });
+        $('.daterange').each(function () { $(this).daterangepicker(); });
     }
-
-    // ---------- AdminLTE Treeview (اگر لازم بود) ----------
-    // AdminLTE 3 خودش treeview را handle می‌کند، نیازی به init دستی نیست.
 
 });
-
 </script>
 
-
-{% endblock %}
-{% block extra_js %}
-{% endblock %}
+{% block extra_js %}{% endblock %}
 </body>
 </html>
