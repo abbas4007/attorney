@@ -149,34 +149,76 @@
 
 <!-- Init Custom -->
 <script>
-  $(function () {
-    // knob
+ // dashboard.js (نسخه اصلاح‌شده و safe)
+
+$(function () {
+
+    // ---------- jQuery Knob ----------
     if ($.fn.knob) {
-      $(".knob").knob();
+        $(".knob").each(function () {
+            try {
+                $(this).knob();
+            } catch (e) {
+                console.warn("Knob init error:", e);
+            }
+        });
     }
 
-    // summernote
-    if ($('.textarea').length && $.fn.summernote) {
-      $('.textarea').summernote();
+    // ---------- Summernote ----------
+    if ($.fn.summernote && $('.textarea').length) {
+        $('.textarea').summernote({
+            height: 200, // می‌توانی تغییر بدهی
+        });
     }
 
-    // sparkline
-    if ($('#sparkline-1').length && $.fn.sparkline) {
-      $('#sparkline-1').sparkline([5,6,7,2,0,-4,-2,4], { type: 'bar' });
+    // ---------- Sparkline ----------
+    if ($.fn.sparkline) {
+        $('#sparkline-1').each(function () {
+            try {
+                $(this).sparkline([5,6,7,2,0,-4,-2,4], { type: 'bar' });
+            } catch (e) {
+                console.warn("Sparkline init error:", e);
+            }
+        });
     }
 
-    // jqvmap
-    if ($('#world-map').length && $.fn.vectorMap) {
-      var w = $('#world-map').width() || 600;
-      var h = $('#world-map').height() || 400;
-      $('#world-map').vectorMap({
-        map: 'world_en',
-        backgroundColor: 'transparent',
-        width: w,
-        height: h,
-      });
+    // ---------- JQVMap ----------
+    if ($.fn.vectorMap && $('#world-map').length) {
+        try {
+            var $map = $('#world-map');
+            var w = parseInt($map.width()) || 600;
+            var h = parseInt($map.height()) || 400;
+
+            $map.vectorMap({
+                map: 'world_en',
+                backgroundColor: 'transparent',
+                width: w,
+                height: h,
+                series: {
+                    regions: [{
+                        values: {}, // داده‌ها را اینجا اضافه کن
+                        scale: ['#C8EEFF', '#0071A4'],
+                        normalizeFunction: 'polynomial'
+                    }]
+                },
+            });
+        } catch (e) {
+            console.warn("jqvmap init error:", e);
+        }
     }
-  });
+
+    // ---------- Daterangepicker ----------
+    if ($.fn.daterangepicker) {
+        $('.daterange').each(function () {
+            $(this).daterangepicker();
+        });
+    }
+
+    // ---------- AdminLTE Treeview (اگر لازم بود) ----------
+    // AdminLTE 3 خودش treeview را handle می‌کند، نیازی به init دستی نیست.
+
+});
+
 </script>
 
 
