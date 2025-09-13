@@ -20,22 +20,18 @@
   <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
   <!-- Custom -->
   <link rel="stylesheet" href="{% static 'registration/adminlte/assets/css/custom.css' %}">
-  <!-- Favicon -->
-  <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
 
-  <!-- فونت‌ها -->
+  <!-- فونت‌ها - بدون crossorigin برای رفع بلوک visibility -->
   <style>
     @font-face {
       font-family: 'Sahel';
       src: url('{% static "font/Sahel.ttf" %}') format('truetype');
-      crossorigin: anonymous;
     }
     @font-face {
       font-family: 'B Titr';
       src: url('{% static "fonts/B-Titr.woff2" %}') format('woff2'),
            url('{% static "fonts/B-Titr.woff" %}') format('woff');
       font-display: swap;
-      crossorigin: anonymous;
     }
     body {
       font-family: 'B Titr', 'Sahel', sans-serif;
@@ -129,12 +125,13 @@
           </div>
         </div>
 
-        <!-- المان‌های داشبورد (برای رفع خطاهای JS) -->
+        <!-- المان‌های داشبورد (بهبود یافته برای رفع خطاهای JS) -->
         <div class="row">
           <div class="col-lg-3 col-6">
+            <!-- Sparkline - با div خالی برای innerHTML -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3 id="sparkline-1">۰</h3>
+                <h3><span id="sparkline-1"></span></h3>
                 <p>تعداد مقالات</p>
               </div>
               <div class="icon">
@@ -156,7 +153,7 @@
           <!-- ادامه باکس‌ها اگر نیاز داری -->
         </div>
 
-        <!-- نقشه جهان (برای JQVMap) -->
+        <!-- نقشه جهان (با ابعاد ثابت برای JQVMap) -->
         <div class="row">
           <div class="col-12">
             <div class="card">
@@ -164,7 +161,7 @@
                 <h3 class="card-title">نقشه بازدیدها</h3>
               </div>
               <div class="card-body">
-                <div id="world-map" style="width: 100%; height: 300px;"></div>
+                <div id="world-map" style="width: 600px; height: 400px;"></div>
               </div>
             </div>
           </div>
@@ -197,6 +194,9 @@
 <!-- Quill JS -->
 <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
 
+<!-- Dashboard JS - اگر لود می‌شه، اما برای رفع Summernote -->
+<script src="{% static 'registration/adminlte/assets/js/pages/dashboard.js' %}"></script>
+
 <script>
 $(function () {
 
@@ -207,22 +207,23 @@ $(function () {
     });
   }
 
-  // Sparkline (الان المان وجود داره)
-  if ($.fn.sparkline && $('#sparkline-1').length){
+  // Sparkline - با چک دقیق‌تر
+  if ($.fn.sparkline && $('#sparkline-1').length && $('#sparkline-1').is('span')){
     try {
       $('#sparkline-1').sparkline([5,6,7,2,0,-4,-2,4], { type: 'bar' });
     } catch(e){ console.warn("Sparkline error:", e); }
+  } else {
+    console.warn('Sparkline element not ready or not span');
   }
 
-  // JQVMap (الان المان وجود داره)
+  // JQVMap - با ابعاد ثابت
   if ($.fn.vectorMap && $('#world-map').length){
     try {
-      var $map = $('#world-map');
-      $map.vectorMap({
+      $('#world-map').vectorMap({
         map: 'world_en',
         backgroundColor: 'transparent',
-        width: $map.width() || 600,
-        height: $map.height() || 400,
+        width: 600,
+        height: 400,
       });
     } catch(e){ console.warn("jqvmap error:", e); }
   }
@@ -239,11 +240,15 @@ $(function () {
       theme: 'snow',
       placeholder: 'متن خود را اینجا بنویسید'
     });
-    // اگر مقدار اولیه وجود داره، set کن (برای ویرایش)
+    // اگر مقدار اولیه وجود داره، set کن (برای ویرایش) - فرض QuillField delta JSON
     var textarea = editorContainer.querySelector('textarea');
     if (textarea && textarea.value) {
-      var delta = JSON.parse(textarea.value); // فرض بر delta format Quill
-      quill.setContents(delta);
+      try {
+        var delta = JSON.parse(textarea.value);
+        quill.setContents(delta);
+      } catch(e) {
+        quill.setText(textarea.value); // fallback به text
+      }
     }
     // برای submit، delta رو به textarea بریز
     quill.on('text-change', function() {
@@ -252,11 +257,15 @@ $(function () {
     });
   }
 
-  // اگر dashboard.js داری و Summernote درش هست، این رو اضافه کن تا خطا نده
-  if (typeof $('.summernote').summernote === 'function') {
-    $('.summernote').summernote();
+  // رفع Summernote از dashboard.js - override initialize
+  if (typeof $.fn.summernote !== 'undefined') {
+    if ($('.summernote').length > 0) {
+      $('.summernote').summernote();
+    } else {
+      console.log('No summernote elements found, skipping init');
+    }
   } else {
-    console.log('Summernote not needed or not loaded');
+    console.log('Summernote library not loaded, skipping init');
   }
 });
 </script>
@@ -264,3 +273,4 @@ $(function () {
 {% block extra_js %}{% endblock %}
 </body>
 </html>
+
