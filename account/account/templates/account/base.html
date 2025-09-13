@@ -27,16 +27,18 @@
   <style>
     @font-face {
       font-family: 'Sahel';
-      src: url('{% static "fonts/Sahel.ttf" %}') format('truetype');
+      src: url('{% static "font/Sahel.ttf" %}') format('truetype');
+      crossorigin: anonymous;
     }
     @font-face {
       font-family: 'B Titr';
       src: url('{% static "fonts/B-Titr.woff2" %}') format('woff2'),
            url('{% static "fonts/B-Titr.woff" %}') format('woff');
       font-display: swap;
+      crossorigin: anonymous;
     }
     body {
-      font-family: 'Sahel', 'B Titr', sans-serif;
+      font-family: 'B Titr', 'Sahel', sans-serif;
       direction: rtl;
       text-align: right;
     }
@@ -71,11 +73,101 @@
     <section class="content pt-3">
       <div class="container-fluid">
         {% block main %}
-        <h1 class="mb-4">عنوان صفحه</h1>
+        <h1 class="mb-4">داشبورد - مدیریت مقالات</h1>
 
-        <!-- Quill Editor -->
-        <div id="editor-container" style="height: 200px; background:#fff;">
-          {{ form.description }}
+        <!-- فرم مقاله (برای مثال) -->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">ایجاد/ویرایش مقاله</h3>
+              </div>
+              <form method="post">
+                {% csrf_token %}
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="{{ form.title.id_for_label }}">عنوان مقاله</label>
+                    {{ form.title }}
+                  </div>
+                  <div class="form-group">
+                    <label for="{{ form.slug.id_for_label }}">اسلاگ</label>
+                    {{ form.slug }}
+                  </div>
+                  <div class="form-group">
+                    <label for="{{ form.category.id_for_label }}">دسته‌بندی</label>
+                    {{ form.category }}
+                  </div>
+                  <div class="form-group">
+                    <label for="{{ form.description.id_for_label }}">محتوا</label>
+                    <div id="editor-container" style="height: 300px; background: #fff; border: 1px solid #ccc;">
+                      <!-- QuillField به عنوان textarea رندر می‌شود -->
+                      {{ form.description }}
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="{{ form.thumbnail.id_for_label }}">تصویر</label>
+                    {{ form.thumbnail }}
+                  </div>
+                  <div class="form-group">
+                    <label for="{{ form.status.id_for_label }}">وضعیت</label>
+                    {{ form.status }}
+                  </div>
+                  <div class="form-group">
+                    <label for="{{ form.is_special.id_for_label }}">مقاله ویژه</label>
+                    {{ form.is_special }}
+                  </div>
+                  <div class="form-group">
+                    <label for="{{ form.video.id_for_label }}">ویدیو</label>
+                    {{ form.video }}
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">ذخیره</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- المان‌های داشبورد (برای رفع خطاهای JS) -->
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3 id="sparkline-1">۰</h3>
+                <p>تعداد مقالات</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-file-alt"></i>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-6">
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>۵۳<sup style="font-size: 20px">%</sup></h3>
+                <p>نرخ انتشار</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+            </div>
+          </div>
+          <!-- ادامه باکس‌ها اگر نیاز داری -->
+        </div>
+
+        <!-- نقشه جهان (برای JQVMap) -->
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">نقشه بازدیدها</h3>
+              </div>
+              <div class="card-body">
+                <div id="world-map" style="width: 100%; height: 300px;"></div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {% endblock %}
@@ -107,20 +199,22 @@
 
 <script>
 $(function () {
-  // Knob
+
+  // Knob (اگر المانی داری)
   if ($.fn.knob) {
     $(".knob").each(function(){
       try { $(this).knob(); } catch(e){ console.warn("Knob error:", e); }
     });
   }
 
-  // Sparkline
+  // Sparkline (الان المان وجود داره)
   if ($.fn.sparkline && $('#sparkline-1').length){
-    try { $('#sparkline-1').sparkline([5,6,7,2,0,-4,-2,4], { type: 'bar' }); }
-    catch(e){ console.warn("Sparkline error:", e); }
+    try {
+      $('#sparkline-1').sparkline([5,6,7,2,0,-4,-2,4], { type: 'bar' });
+    } catch(e){ console.warn("Sparkline error:", e); }
   }
 
-  // JQVMap
+  // JQVMap (الان المان وجود داره)
   if ($.fn.vectorMap && $('#world-map').length){
     try {
       var $map = $('#world-map');
@@ -133,17 +227,36 @@ $(function () {
     } catch(e){ console.warn("jqvmap error:", e); }
   }
 
-  // Date Range
+  // Date Range (اگر المانی داری)
   if ($.fn.daterangepicker) {
     $('.daterange').each(function(){ $(this).daterangepicker(); });
   }
 
-  // Quill
-  if (document.getElementById('editor-container')){
-    var quill = new Quill('#editor-container', {
+  // Quill Editor (initialize روی textarea داخل container)
+  var editorContainer = document.getElementById('editor-container');
+  if (editorContainer){
+    var quill = new Quill(editorContainer, {
       theme: 'snow',
       placeholder: 'متن خود را اینجا بنویسید'
     });
+    // اگر مقدار اولیه وجود داره، set کن (برای ویرایش)
+    var textarea = editorContainer.querySelector('textarea');
+    if (textarea && textarea.value) {
+      var delta = JSON.parse(textarea.value); // فرض بر delta format Quill
+      quill.setContents(delta);
+    }
+    // برای submit، delta رو به textarea بریز
+    quill.on('text-change', function() {
+      var delta = quill.getContents();
+      textarea.value = JSON.stringify(delta);
+    });
+  }
+
+  // اگر dashboard.js داری و Summernote درش هست، این رو اضافه کن تا خطا نده
+  if (typeof $('.summernote').summernote === 'function') {
+    $('.summernote').summernote();
+  } else {
+    console.log('Summernote not needed or not loaded');
   }
 });
 </script>
