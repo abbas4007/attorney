@@ -27,7 +27,7 @@
   <style>
     @font-face {
       font-family: 'Sahel';
-      src: url('{% static "font/Sahel.ttf" %}') format('truetype');
+      src: url('{% static "fonts/Sahel.ttf" %}') format('truetype');
     }
     @font-face {
       font-family: 'B Titr';
@@ -36,7 +36,7 @@
       font-display: swap;
     }
     body {
-      font-family: 'B Titr', 'Sahel', sans-serif;
+      font-family: 'Sahel', 'B Titr', sans-serif;
       direction: rtl;
       text-align: right;
     }
@@ -107,7 +107,6 @@
 
 <script>
 $(function () {
-
   // Knob
   if ($.fn.knob) {
     $(".knob").each(function(){
