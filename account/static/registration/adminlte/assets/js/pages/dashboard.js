@@ -9,19 +9,19 @@ $(function () {
   'use strict';
 
   // Initialize Summernote with existence check
-  if (typeof $.fn.summernote === 'function' && $('.textarea').length) {
-    $('.textarea').summernote({
-      toolbar: [
-        ['style', ['style']],
-        ['font', ['bold', 'underline', 'clear']],
-        ['para', ['ul', 'ol']],
-        ['insert', ['link']],
-        ['view', ['fullscreen', 'codeview']]
-      ]
-    });
-  } else {
-    console.warn('Summernote not initialized - Library not loaded or no .textarea elements found');
-  }
+  // if (typeof $.fn.summernote === 'function' && $('.textarea').length) {
+  //   $('.textarea').summernote({
+  //     toolbar: [
+  //       ['style', ['style']],
+  //       ['font', ['bold', 'underline', 'clear']],
+  //       ['para', ['ul', 'ol']],
+  //       ['insert', ['link']],
+  //       ['view', ['fullscreen', 'codeview']]
+  //     ]
+  //   });
+  // } else {
+  //   console.warn('Summernote not initialized - Library not loaded or no .textarea elements found');
+  // }
 
   // Date range picker
   $('.daterange').daterangepicker({

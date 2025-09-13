@@ -78,6 +78,12 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
+    @property
+    def description_text(self) :
+        # فقط متن خالی از تگ HTML
+        from django.utils.html import strip_tags
+        return strip_tags(self.description.html)
+
     def save(self, *args, **kwargs):
         if not self.slug:  # فقط وقتی slug وارد نشده
             base_slug = slugify_fa(self.title)
