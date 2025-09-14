@@ -7,7 +7,7 @@ from .views import (
     ArticleList,
     article_create_view,delete_article_image,
     ArticleUpdate,
-    ArticleDelete, CustomLoginView, ComisionView,CategoryListView,CategoryCreateView,CategoryUpdateView,CategoryDeleteView,
+    ArticleDelete, CustomLoginView,CategoryListView,CategoryCreateView,CategoryUpdateView,CategoryDeleteView,
 )
 
 app_name = 'account'
@@ -15,7 +15,6 @@ app_name = 'account'
 urlpatterns = [
 	path('', ArticleList.as_view(), name="home"),
     path('article/create/', article_create_view, name="create_article"),
-    path('comision/', ComisionView.as_view(), name = "comision"),
     path('article/update/<int:pk>', ArticleUpdate.as_view(), name="article_update"),
 	path('article/delete/<int:pk>', ArticleDelete.as_view(), name="article_delete"),
     path('login/', CustomLoginView.as_view(), name = 'login'),
