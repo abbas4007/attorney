@@ -83,6 +83,23 @@
 .ftco-footer-social li a:hover {
   color: #f0ad4e;
 }
+.blog-entry .block-20 {
+  display: block;
+  width: 100%;
+  height: 250px; /* ارتفاع ثابت برای عکس */
+  background-size: cover;
+  background-position: center;
+}
+
+.blog-entry {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.blog-entry .text {
+  flex-grow: 1;
+}
 
 /* نقشه */
 .ftco-footer iframe {
@@ -497,18 +514,19 @@
         <h2>آخرین مقالات</h2>
       </div>
     </div>
+
     <div class="row">
       {% for i in page_obj %}
       <div class="col-md-4 d-flex ftco-animate">
         <div class="blog-entry">
           
-          <!-- تصویر مقاله -->
-          <a href="{% url 'home:post_detail' i.id %}" 
-             class="block-20" 
+          <!-- تصویر -->
+          <a href="{% url 'home:post_detail' i.id %}"
+             class="block-20"
              style="background-image: url({{i.thumbnail.url}});">
           </a>
-
-          <!-- متن مقاله -->
+          
+          <!-- متن -->
           <div class="text p-4">
             <h3 class="heading mb-3">
               <a href="{% url 'home:post_detail' i.id %}">{{ i.title }}</a>
@@ -523,7 +541,7 @@
                 <span class="mos">{{ i.created.month }}</span>
               </div>
             </div>
-
+            
             <p>{{ i.body|truncatewords:20 }}</p>
             <p><a href="{% url 'home:post_detail' i.id %}" class="btn btn-primary">مشاهده</a></p>
           </div>
