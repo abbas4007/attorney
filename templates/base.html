@@ -83,22 +83,35 @@
 .ftco-footer-social li a:hover {
   color: #f0ad4e;
 }
-.blog-entry .block-20 {
-  display: block;
-  width: 100%;
-  height: 250px; /* ارتفاع ثابت برای عکس */
-  background-size: cover;
-  background-position: center;
-}
-
 .blog-entry {
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%; /* اطمینان از استفاده کامل از عرض ستون */
+  box-sizing: border-box; /* جلوگیری از مشکلات margin/padding */
 }
 
 .blog-entry .text {
   flex-grow: 1;
+  width: 100%; /* اطمینان از استفاده از کل عرض */
+  padding: 15px; /* تنظیم فاصله داخلی مناسب */
+}
+
+.blog-entry .block-20 {
+  display: block;
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+}
+
+.container {
+  max-width: 1200px; /* عرض بیشتر برای container */
+}
+
+/* رفع مشکلات احتمالی تداخل FTCO */
+.ftco-animate {
+  width: 100% !important; /* جلوگیری از تغییر عرض توسط انیمیشن */
 }
 
 /* نقشه */
