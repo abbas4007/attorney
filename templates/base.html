@@ -32,14 +32,43 @@
         font-family: Sahel !important;
       }
   /* استایل عمومی فوتر */
-      .blog-entry {
+     .blog-entry {
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 20px; /* فاصله بین مقالات */
+}
+
+.blog-entry .block-20 {
+  display: block;
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 5px; /* برای ظاهر بهتر */
 }
 
 .blog-entry .text {
   flex-grow: 1;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* رفع تداخل‌های احتمالی FTCO */
+.ftco-animate {
+  width: 100% !important;
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+/* تنظیم عرض ستون‌ها در رزولوشن‌های مختلف */
+@media (max-width: 767px) {
+  .col-md-4 {
+    width: 100% !important; /* در موبایل، هر مقاله کل عرض را بگیرد */
+  }
 }
 
 .ftco-footer {
@@ -106,7 +135,9 @@
 }
 
 .container {
-  max-width: 1200px; /* عرض بیشتر برای container */
+  max-width: 1200px; /* عرض مناسب برای container */
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 /* رفع مشکلات احتمالی تداخل FTCO */
@@ -144,6 +175,10 @@
   font-size: 14px;
   color: #aaa;
   margin-top: 25px;
+}
+.row {
+  margin-left: -15px;
+  margin-right: -15px;
 }
 
 /* استایل برای موبایل */
@@ -371,7 +406,8 @@
       </div>
       <div class="col-md-6 pl-md-5">
         <div class="row justify-content-start pt-3 pb-3">
-          <div class="col-md-12 heading-section ftco-animate">
+<div class="col-12 col-sm-6 col-md-6 d-flex ftco-animate">
+
             <span class="subheading">به دفتر من خوش آمدید</span>
             <h2 class="mb-4">ما برای حقوق موکل خود می جنگیم</h2>
             <p>موسسه حقوقی دادگستر با مدیریت آقای حمید به گذر وکیل پایه یک دادگستری با تکیه بر تجربه و دانش حقوقی، به حل مشکلات شما می پردازد.</p>
