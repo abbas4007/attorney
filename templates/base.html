@@ -412,9 +412,9 @@
 
     <div class="row">
       {% for i in page_obj %}
-      <div class="col-md-4 d-flex ftco-animate">
-        <div class="blog-entry">
-          <a href="{% url 'home:post_detail' i.id %}" class="block-20" style="background-image: url({{i.thumbnail.url}});"></a>
+      <div class="col-12 col-md-4 d-flex ftco-animate">
+        <div class="blog-entry" style="width: 100%;">
+          <a href="{% url 'home:post_detail' i.id %}" class="block-20" style="background-image: url({{ i.thumbnail.url }}); width: 100%; height: 250px; background-size: cover; background-position: center;"></a>
           <div class="text p-4">
             <h3 class="heading mb-3">
               <a href="{% url 'home:post_detail' i.id %}">{{ i.title }}</a>
@@ -428,7 +428,7 @@
                 <span class="mos">{{ i.created.month }}</span>
               </div>
             </div>
-            <p>{{ i.body|truncatewords:20 }}</p>
+            <p>{{ i.body|truncatewords:30 }}</p>
             <p><a href="{% url 'home:post_detail' i.id %}" class="btn btn-primary">مشاهده</a></p>
           </div>
         </div>
@@ -437,7 +437,6 @@
     </div>
   </div>
 </section>
-
 <!-- Footer -->
 <footer class="ftco-footer ftco-bg-dark ftco-section">
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
