@@ -1,152 +1,122 @@
-
-from django.contrib import messages
-from django.contrib.auth.views import LoginView
-from django.db.models import Q
-from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
-from django.views.decorators.http import require_POST
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.conf import settings
-import requests
-from home.models import Article, ArticleImage, ArticleFile, Category
-from .forms import ArticleForm,CategoryForm
-from .models import ContactMessage
-from django.http import JsonResponse
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
+from django.contrib.auth.views import LoginView, PasswordChangeView
+from .models import User
+from .forms import ProfileForm
+from .mixins import (
+	FieldsMixin,
+	FormValidMixin,
+	AuthorAccessMixin,
+	AuthorsAccessMixin,
+	SuperUserAccessMixin
+)
+from django.views.generic import (
+	ListView,
+	CreateView,
+	UpdateView,
+	DeleteView
+)
+from blog.models import Article
+
+# Create your views here.
+class ArticleList(AuthorsAccessMixin, ListView):
+	template_name = "registration/home.html"
+
+	def get_queryset(self):
+		if self.request.user.is_superuser:
+			return Article.objects.all()
+		else:
+			return Article.objects.filter(author=self.request.user)
 
 
-# --- مدیریت پیام‌ها ---
-class MessageListView(LoginRequiredMixin, ListView):
-    model = ContactMessage
-    template_name = 'account/message_list.html'
-    context_object_name = 'messages'
-    ordering = ['-created_at']
-    paginate_by = 10
-
-class MessageDetailView(LoginRequiredMixin, DetailView):
-    model = ContactMessage
-    template_name = 'account/message_detail.html'
-    context_object_name = 'message'
-
-class MessageUpdateView(LoginRequiredMixin, UpdateView):
-    model = ContactMessage
-    fields = ['status', 'response']
-    template_name = 'account/message_form.html'
-    success_url = reverse_lazy('account:home')
-
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        if form.cleaned_data.get('response'):
-            try:
-                payload = {
-                    "message": f"پاسخ به پیام شما:\n{form.cleaned_data['response']}",
-                    "receptor": self.object.phone,
-                    "linenumber": settings.SMS_LINE_NUMBER
-                }
-                headers = {
-                    "apikey": settings.GHASEDAK_API_KEY,
-                    "Content-Type": "application/x-www-form-urlencoded"
-                }
-                requests.post("https://api.ghasedak.me/v2/sms/send/simple", data=payload, headers=headers)
-            except Exception as e:
-                print("SMS Response Error:", str(e))
-        return response
+class ArticleCreate(AuthorsAccessMixin, FormValidMixin, FieldsMixin, CreateView):
+	model = Article
+	template_name = "registration/article-create-update.html"
 
 
-# --- ورود ---
-class CustomLoginView(LoginView):
-    template_name = 'account/login.html'
-    redirect_authenticated_user = True
-    success_url = reverse_lazy('account:home')
+class ArticleUpdate(AuthorAccessMixin, FormValidMixin, FieldsMixin, UpdateView):
+	model = Article
+	template_name = "registration/article-create-update.html"
 
 
-# --- مقاله ---
-class ArticleList(LoginRequiredMixin, ListView):
-    model = Article
-    paginate_by = 6
-    template_name = "account/home.html"
-    context_object_name = "object_list"
-
-    def get_queryset(self) :
-        query = self.request.GET.get("q")
-        queryset = Article.objects.filter(status = 'p').order_by('-publish', '-created')
-        if query :
-            queryset = queryset.filter(Q(title__icontains = query)).order_by('-publish', '-created')
-        return queryset
+class ArticleDelete(SuperUserAccessMixin, DeleteView):
+	model = Article
+	success_url = reverse_lazy('account:home')
+	template_name = "registration/article_confirm_delete.html"
 
 
-@login_required
-def article_create_view(request):
-    if request.method == 'POST':
-        form = ArticleForm(request.POST, request.FILES)
-        if form.is_valid():
-            article = form.save()
-            messages.success(request, "مقاله با موفقیت ذخیره شد.")
-            return redirect('home:article_list')
-        else:
-            messages.error(request, "لطفاً خطاهای فرم را بررسی کنید.")
-    else:
-        form = ArticleForm(initial={'author': request.user})
+class Profile(LoginRequiredMixin ,UpdateView):
+	model = User
+	template_name = "registration/profile.html"
+	form_class = ProfileForm
+	success_url = reverse_lazy("account:profile")
 
-    return render(request, 'account/article-create-update.html', {
-        'form': form,
-    })
-@login_required
-@require_POST
-def delete_article_image(request, image_id):
-    try:
-        image = ArticleImage.objects.get(id=image_id)
-        # اطمینان از دسترسی کاربر
-        if request.user.is_superuser or image.article.author == request.user:
-            image.delete()
-            return JsonResponse({'status': 'success'})
-        return JsonResponse({'status': 'error', 'message': 'Permission denied'}, status=403)
-    except ArticleImage.DoesNotExist:
-        return JsonResponse({'status': 'error', 'message': 'Image not found'}, status=404)
+	def get_object(self):
+		return User.objects.get(pk = self.request.user.pk)
 
-class ArticleUpdate(LoginRequiredMixin, UpdateView):
-    model = Article
-    form_class = ArticleForm
-    template_name = "account/article-create-update.html"
-    success_url = reverse_lazy('account:home')
+	def get_form_kwargs(self):
+		kwargs = super(Profile, self).get_form_kwargs()
+		kwargs.update({
+			'user': self.request.user
+		})
+		return kwargs
 
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        files = self.request.FILES.getlist('file')
-        for f in files:
-            ArticleFile.objects.create(article=self.object, file=f)
-        return response
 
-class ArticleDelete(LoginRequiredMixin, DeleteView):
-    model = Article
-    template_name = "account/article_confirm_delete.html"
-    success_url = reverse_lazy('account:home')
+class Login(LoginView):
+	def get_success_url(self):
+		user = self.request.user
+
+		if user.is_superuser or user.is_author:
+			return reverse_lazy("account:home")
+		else:
+			return reverse_lazy("account:profile")
 
 
 
 
-class CategoryListView(ListView):
-    model = Category
-    template_name = 'account/category_list.html'
-    context_object_name = 'categories'
+from django.http import HttpResponse
+from .forms import SignupForm
+from django.contrib.sites.shortcuts import get_current_site
+from django.utils.encoding import force_bytes, force_text
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.template.loader import render_to_string
+from .tokens import account_activation_token
+from django.core.mail import EmailMessage
 
+class Register(CreateView):
+	form_class = SignupForm
+	template_name = "registration/register.html"
 
-class CategoryCreateView(CreateView) :
-    model = Category
-    form_class = CategoryForm
-    template_name = 'account/category_form.html'
-    success_url = reverse_lazy('account:category_list')
+	def form_valid(self, form):
+		user = form.save(commit=False)
+		user.is_active = False
+		user.save()
+		current_site = get_current_site(self.request)
+		mail_subject = 'فعال سازی اکانت'
+		message = render_to_string('registration/activate_account.html', {
+			'user': user,
+			'domain': current_site.domain,
+			'uid':urlsafe_base64_encode(force_bytes(user.pk)),
+			'token':account_activation_token.make_token(user),
+		})
+		to_email = form.cleaned_data.get('email')
+		email = EmailMessage(
+					mail_subject, message, to=[to_email]
+		)
+		email.send()
+		return HttpResponse('لینک فعال سازی به ایمیل شما ارسال شد. <a href="/login">ورود</a>')
 
-
-class CategoryUpdateView(UpdateView):
-    model = Category
-    form_class = CategoryForm
-    template_name = 'account/category_form.html'
-    success_url = reverse_lazy('account:category_list')
-
-class CategoryDeleteView(DeleteView):
-    model = Category
-    template_name = 'account/category_confirm_delete.html'
-    success_url = reverse_lazy('account:category_list')
-
+def activate(request, uidb64, token):
+	try:
+		uid = force_text(urlsafe_base64_decode(uidb64))
+		user = User.objects.get(pk=uid)
+	except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+		user = None
+	if user is not None and account_activation_token.check_token(user, token):
+		user.is_active = True
+		user.save()
+		return HttpResponse('اکانت شما با موفقیت فعال شد. برای ورود <a href="/login">کلیک</a> کنید.')
+	else:
+		return HttpResponse('لینک فعال سازی منقضی شده است. <a href="/registration">دوباره امتحان کنید.</a>')
