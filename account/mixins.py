@@ -44,7 +44,7 @@ class AuthorsAccessMixin():
 			else:
 				return redirect("account:profile")
 		else:
-			return redirect("login")
+			return redirect("account:home")
 
 
 class SuperUserAccessMixin():
