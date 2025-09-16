@@ -6,6 +6,7 @@ from django.urls import reverse
 from extensions.utils import jalali_converter
 import re
 from django_quill.fields import QuillField
+from ckeditor.fields import RichTextField
 
 
 # Create your models here.
@@ -61,7 +62,7 @@ class Article(models.Model):
     title = models.CharField(max_length=200, verbose_name="عنوان مقاله")
     slug = models.CharField(max_length=100, unique=True, verbose_name="آدرس مقاله")
     category = models.ManyToManyField(Category, verbose_name="دسته‌بندی", related_name="articles")
-    description = QuillField(verbose_name="محتوا")
+    description = RichTextField(verbose_name="محتوا")
     thumbnail = models.ImageField(upload_to="image", verbose_name="تصویر مقاله", blank=True, null=True)
     publish = models.DateTimeField(default=timezone.now, verbose_name="زمان انتشار")
     created = models.DateTimeField(auto_now_add=True)

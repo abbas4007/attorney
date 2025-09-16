@@ -1,6 +1,5 @@
 {% extends 'registration/base.html' %}
 {% load crispy_forms_tags %}
-{% load quill_editor %}
 
 {% block title %}{% block title-meta %}
 	لیست مقالات
@@ -22,7 +21,7 @@
 						{{ form.slug|as_crispy_field }}
 					</div>
 					<div class="col-12">
-                {{ form.description|quill_editor }}
+                {{ form.description|as_crispy_field }}
 					</div>
 					<div class="col-6">
 						{{ form.category|as_crispy_field }}
