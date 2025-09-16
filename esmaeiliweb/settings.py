@@ -163,6 +163,6 @@ QUILL_CONFIGS = {
         }
     }
 }
+LOGOUT_REDIRECT_URL = '/'
 
-LOGIN_REDIRECT_URL = 'account:home'
-
+LOGIN_URL = '/account/home/'
