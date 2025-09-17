@@ -17,8 +17,8 @@ app_name = 'account'
 
 urlpatterns = [
 	path('', ArticleList.as_view(), name="home"),
-
     path('article/update/<int:pk>', ArticleUpdate.as_view(), name="article_update"),
+    path('article/create/', article_create_view.as_view(), name="article_create"),
 	path('article/delete/<int:pk>', ArticleDelete.as_view(), name="article_delete"),
     path('login/', CustomLoginView.as_view(), name = 'login'),
     path('refresh-captcha/', refresh_captcha, name='refresh_captcha'),
