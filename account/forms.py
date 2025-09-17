@@ -1,7 +1,6 @@
 from django.forms import modelformset_factory
 from home.models import ArticleFile, Article, ArticleImage, Category
 from django import forms
-from .models import ContactMessage
 from captcha.fields import CaptchaField
 import logging
 
@@ -9,15 +8,6 @@ logger = logging.getLogger(__name__)
 
 
 
-class ContactForm(forms.ModelForm):
-    captcha = CaptchaField(label = "کد امنیتی")
-
-    class Meta :
-        model = ContactMessage
-        fields = ['full_name', 'phone', 'subject', 'message', 'captcha']
-        widgets = {
-            'message' : forms.Textarea(attrs = {'rows' : 5}),
-        }
 
 
 

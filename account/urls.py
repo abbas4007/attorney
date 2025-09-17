@@ -10,7 +10,7 @@ from .views import (
 CustomLoginView,
 CategoryCreateView,CategoryDeleteView,CategoryListView,CategoryUpdateView,
     ArticleDelete,
-    success_page,MessageUpdateView,MessageListView,delete_article_image,refresh_captcha,MessageDetailView
+    delete_article_image
 )
 
 app_name = 'account'
@@ -21,11 +21,6 @@ urlpatterns = [
     path('article/create/', article_create_view.as_view(), name="article_create"),
 	path('article/delete/<int:pk>', ArticleDelete.as_view(), name="article_delete"),
     path('login/', CustomLoginView.as_view(), name = 'login'),
-    path('refresh-captcha/', refresh_captcha, name='refresh_captcha'),
-    path('contact/success/', success_page, name = 'success_page'),
-    path('messages/', MessageListView.as_view(), name = 'message_list'),
-    path('messages/<int:pk>/', MessageDetailView.as_view(), name = 'message_detail'),
-    path('admin/messages/<int:pk>/', MessageUpdateView.as_view(), name = 'message_update'),
     path('delete-article-image/<int:image_id>/', delete_article_image, name='delete-article-image'),
     path('categories/', CategoryListView.as_view(), name = 'category_list'),
     path('categories/add/', CategoryCreateView.as_view(), name = 'category_add'),
