@@ -1,4 +1,4 @@
- requirements.txt فعلی من:amqp==5.3.1
+amqp==5.3.1
 arabic-reshaper==3.0.0
 argon2-cffi==23.1.0
 argon2-cffi-bindings==21.2.0
