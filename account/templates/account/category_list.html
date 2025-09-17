@@ -1,0 +1,75 @@
+{% extends 'account/base.html' %}
+{% load crispy_forms_tags %}
+
+    {% csrf_token %}
+
+{% block title %}{% block title-meta %}
+                    لیست دسته‌بندی‌ها
+{% endblock %}{% endblock %}
+{% block main %}
+
+
+            <div class="row mb-2">
+
+
+            </div>
+
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">دسته‌بندی‌ها</h3>
+                            <div class="card-tools">
+                                <a href="{% url 'account:category_add' %}" class="btn btn-primary">
+                                    <i class="fas fa-plus"></i> افزودن دسته‌بندی
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>عنوان</th>
+                                        <th>وضعیت</th>
+{#                                        <th>پوزیشن</th>#}
+{#                                        <th>عملیات</th>#}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for category in categories %}
+                                    <tr>
+                                        <td>{{ category.title }}</td>
+                                        <td>
+                                            {% if category.status %}
+                                                <span class="badge badge-success">فعال</span>
+                                            {% else %}
+                                                <span class="badge badge-danger">غیرفعال</span>
+                                            {% endif %}
+                                        </td>
+{#                                        <td>{{ category.position }}</td>#}
+{#                                        <td>#}
+{#                                            <a href="{% url 'account:category_edit' category.id %}" class="btn btn-sm btn-warning">#}
+{#                                                <i class="fas fa-edit"></i> ویرایش#}
+{#                                            </a>#}
+{#                                            <a href="{% url 'account:category_delete' category.id %}" class="btn btn-sm btn-danger">#}
+{#                                                <i class="fas fa-trash"></i> حذف#}
+{#                                            </a>#}
+{#                                        </td>#}
+                                    </tr>
+                                    {% empty %}
+                                    <tr>
+                                        <td colspan="4" class="text-center">هیچ دسته‌بندی وجود ندارد.</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div></section>
+{% endblock %}

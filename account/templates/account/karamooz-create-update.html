@@ -1,0 +1,175 @@
+{% extends 'account/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}افزودن کارآموز{% endblock %}
+
+{% block extra_head %}
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<style>
+    /* استایل های پایه */
+    @font-face {
+        font-family: 'Sahel';
+        src: url('{% static "font/Sahel.ttf" %}') format('truetype');
+    }
+
+    body {
+        font-family: 'Sahel', Arial, sans-serif;
+    }
+
+    /* استایل های اختصاصی Select2 */
+    .select2-container {
+        width: 100% !important;
+    }
+
+    .select2-container--default .select2-selection--single {
+        height: 38px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__rendered {
+        line-height: 38px;
+        padding-right: 20px;
+        text-align: right;
+    }
+
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        height: 36px;
+        left: 7px;
+        right: auto;
+    }
+
+    .select2-dropdown {
+        border: 1px solid #ced4da;
+        text-align: right;
+        direction: rtl;
+    }
+
+    .select2-results__option {
+        padding: 8px 12px;
+    }
+
+    .select2-search--dropdown .select2-search__field {
+        border: 1px solid #ced4da;
+        text-align: right;
+    }
+</style>
+{% endblock %}
+
+{% block main %}
+<div class="col-md-12">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title mb-0 float-left">افزودن کارآموز</h3>
+        </div>
+<div class="card-body">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if form.errors %}
+            <div class="alert alert-danger">
+                <ul>
+                    {% for field, errors in form.errors.items %}
+                        <li>{{ field }}: {{ errors|join:", " }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-6">
+                {{ form.name|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.lastname|as_crispy_field }}
+            </div>
+            <div class="col-12">
+                {{ form.gender|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.code|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.thumbnail|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ form.address|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="id_sarparast">سرپرست</label>
+                    <select name="sarparast" class="form-control select2" id="id_sarparast">
+                        {% if form.sarparast.value %}
+                            <option value="{{ form.sarparast.value }}" selected>
+                                {{ form.instance.sarparast.name }} {{ form.instance.sarparast.lastname }}
+                            </option>
+                        {% endif %}
+                    </select>
+                </div>
+            </div>
+            <div class="col-6">
+                {{ form.mobile|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="{{ form.city.id_for_label }}">شهر</label>
+                    <select name="{{ form.city.name }}" class="form-control" id="{{ form.city.id_for_label }}">
+                        {% for value, name in form.fields.city.choices %}
+                            <option value="{{ value }}" {% if form.city.value == value %}selected{% endif %}>{{ name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <!-- اضافه کردن فیلدهای تاریخ -->
+            <div class="col-4">
+                {{ form.day|as_crispy_field }}
+            </div>
+            <div class="col-4">
+                {{ form.month|as_crispy_field }}
+            </div>
+            <div class="col-4">
+                {{ form.year|as_crispy_field }}
+            </div>
+        </div>
+        <button class="btn btn-success mt-3">افزودن</button>
+    </form>
+</div>    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/i18n/fa.js"></script>
+
+<script>
+$(document).ready(function() {
+    // فعال کردن Select2 برای فیلد سرپرست با قابلیت جستجوی AJAX
+    $('#id_sarparast').select2({
+        language: 'fa',
+        placeholder: "نام وکیل را جستجو کنید...",
+        allowClear: true,
+        width: '100%',
+        dir: 'rtl',
+        dropdownAutoWidth: true,
+        minimumInputLength: 1,
+        ajax: {
+            url: '{% url "account:search-vakils" %}',  // استفاده از URL نام‌گذاری شده Django
+            dataType: 'json',
+            delay: 250,
+            data: function(params) {
+                return {
+                    q: params.term,  // عبارت جستجو
+                    page: params.page
+                };
+            },
+            processResults: function(data, params) {
+                return {
+                    results: data.items
+                };
+            },
+            cache: true
+        }
+    });
+});
+</script>
+{% endblock %}

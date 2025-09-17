@@ -1,16 +1,20 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin
-from .models import User
+from .models import ContactMessage
 
-UserAdmin.fieldsets[2][1]['fields'] = (
-										'is_active', 
-										'is_staff', 
-										'is_superuser', 
-										'is_author', 
-										'special_user', 
-										'groups', 
-										'user_permissions'
-									)
-UserAdmin.list_display += ('is_author', 'is_special_user')
-
-admin.site.register(User, UserAdmin)
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+    list_display = ('full_name', 'subject', 'created_at', 'status')
+    list_filter = ('status', 'created_at')
+    search_fields = ('full_name', 'email', 'phone', 'subject')
+    readonly_fields = ('created_at',)
+    fieldsets = (
+        (None, {
+            'fields': ('full_name', 'email', 'phone')
+        }),
+        ('محتوا', {
+            'fields': ('subject', 'message', 'response')
+        }),
+        ('وضعیت', {
+            'fields': ('status', 'created_at')
+        }),
+    )

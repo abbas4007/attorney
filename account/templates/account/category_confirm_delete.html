@@ -1,0 +1,48 @@
+{% extends 'account/base.html' %}
+{% load crispy_forms_tags %}
+
+    {% csrf_token %}
+
+{% block title %}{% block title-meta %}
+	افزودن خبر
+{% endblock %}{% endblock %}
+
+{% block main %}
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>حذف دسته‌بندی</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="{% url 'account:home' %}">خانه</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'account:category_list' %}">لیست دسته‌بندی‌ها</a></li>
+                        <li class="breadcrumb-item active">حذف دسته‌بندی</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>آیا مطمئن هستید که می‌خواهید دسته‌بندی "{{ object.title }}" را حذف کنید؟</p>
+                            <form method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">حذف</button>
+                                <a href="{% url 'account:category_list' %}" class="btn btn-secondary">بازگشت</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
