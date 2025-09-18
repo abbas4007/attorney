@@ -69,7 +69,7 @@ class ArticleForm(forms.ModelForm) :
         model = Article
         fields = [
             'title', 'description', 'category', 'thumbnail',
-            'author', 'is_special', 'status', 'tags',
+            'author', 'is_special', 'status',
             'video'
         ]
         widgets = {
