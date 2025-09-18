@@ -1,4 +1,4 @@
-{% load static %}
+ {% load static %}
 <!DOCTYPE html>
 <html lang="fa" style="direction: rtl;">
     {% block headers %}
@@ -28,570 +28,624 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 	<link href='https://cdn.fontcdn.ir/Font/Persian/Sahel/Sahel.css' rel='stylesheet' type='text/css'>
     <style type="text/css">
-      body {
+        body {
         font-family: Sahel !important;
       }
-  /* استایل عمومی فوتر */
-     .blog-entry {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  box-sizing: border-box;
-  margin-bottom: 20px; /* فاصله بین مقالات */
-}
-/* کانتینر اصلی کاروسل */
-.carousel-case .item {
-  margin: 10px;
-  transition: all 0.3s ease-in-out;
-}
+        </style>
+    {% endblock %}
+     {% block content %}
 
-/* کارت هر مقاله */
-.case.img {
-  height: 300px; /* ارتفاع ثابت */
-  background-size: cover;
-  background-position: center center;
-  border-radius: 10px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  <body>
+    
+	  <nav class="navbar px-md-0 navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html">Legalcare <span>A Law Firm Agency</span></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
 
-/* متن روی کارت */
-.case .text {
-  background: rgba(0, 0, 0, 0.6); /* بک‌گراند نیمه شفاف روی عکس */
-  color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 90%;
-  transition: all 0.3s ease-in-out;
-}
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+	          <li class="nav-item"><a href="attorneys.html" class="nav-link">Attorneys</a></li>
+	          <li class="nav-item"><a href="practice-areas.html" class="nav-link">Practice Areas</a></li>
+	          <li class="nav-item"><a href="case.html" class="nav-link">Case Studies</a></li>
+	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+	          <li class="nav-item cta"><a href="#" class="nav-link">Free Consultation</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+    
+    <div class="hero-wrap js-fullheight" style="background-image: url('{% static 'assets/images/beh.jpg' %}');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
+          <div class="col-md-6 ftco-animate">
+          	<h2 class="subheading">Welcome To Legalcare</h2>
+          	<h1>Attorneys Fighting For Your 
+						  <span
+						     class="txt-rotate"
+						     data-period="2000"
+						     data-rotate='[ "Freedom.", "Rights.", "Case.", "Custody." ]'></span>
+						</h1>
+            <!-- <h1 class="mb-4">Attorneys Fighting For Your Freedom</h1> -->
+            <p class="mb-4">We have help thousands of people to get relief from national wide fights wrongfull denials. Now they trusted legalcare attorneys</p>
+            <p><a href="#" class="btn btn-primary mr-md-4 py-2 px-4">Get Legal Advice <span class="ion-ios-arrow-forward"></span></a></p>
+          </div>
+        </div>
+      </div>
+    </div>
 
-.case .text h3 a {
-  color: #fff;
-  text-decoration: none;
-}
+    <section class="ftco-section ftco-no-pt">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-lg-3 py-5">
+	          <div class="heading-section ftco-animate">
+	          	<span class="subheading">Services</span>
+	            <h2 class="mb-4">Why Select Us?</h2>
+	            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your.</p>
+	            <p><a href="#" class="btn btn-primary py-3 px-4">Free Consultation</a></p>
+	          </div>
+    			</div>
+    			<div class="col-lg-9 services-wrap px-4 pt-5">
+    				<div class="row pt-md-3">
+    					<div class="col-md-4 d-flex align-items-stretch">
+		    				<div class="services text-center">
+		    					<div class="icon d-flex justify-content-center align-items-center">
+		    						<span class="flaticon-lawyer"></span>
+		    					</div>
+		    					<div class="text">
+		    						<h3>Fight for Justice</h3>
+		    						<p>Seeking justice in the world is a sed significant emotional and investment when we follow this call.</p>
+		    					</div>
+		    					<a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="ion-ios-arrow-round-forward"></span></a>
+		    				</div>
+		    			</div>
+		    			<div class="col-md-4 d-flex align-items-stretch">
+		    				<div class="services text-center">
+		    					<div class="icon d-flex justify-content-center align-items-center">
+		    						<span class="flaticon-lawyer"></span>
+		    					</div>
+		    					<div class="text">
+		    						<h3>Best Case Strategy</h3>
+		    						<p>Seeking justice in the world is a sed significant emotional and investment when we follow this call.</p>
+		    					</div>
+		    					<a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="ion-ios-arrow-round-forward"></span></a>
+		    				</div>
+		    			</div>
+		    			<div class="col-md-4 d-flex align-items-stretch">
+		    				<div class="services text-center">
+		    					<div class="icon d-flex justify-content-center align-items-center">
+		    						<span class="flaticon-lawyer"></span>
+		    					</div>
+		    					<div class="text">
+		    						<h3>Experienced Attorney</h3>
+		    						<p>Seeking justice in the world is a sed significant emotional and investment when we follow this call.</p>
+		    					</div>
+		    					<a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="ion-ios-arrow-round-forward"></span></a>
+		    				</div>
+		    			</div>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </section>
+   	
+    <section class="ftco-section ftco-no-pt ftco-no-pb">
+    	<div class="container">
+    		<div class="row d-flex">
+    			<div class="col-md-6 d-flex">
+    				<div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-end" style="background-image:url('{% static 'assets/images/1 (2).jpg' %}');">
+    					<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
+    						<span class="icon-play"></span>
+    					</a>
+    				</div>
+    			</div>
+    			<div class="col-md-6 pl-md-5">
+    				<div class="row justify-content-start pt-3 pb-3">
+		          <div class="col-md-12 heading-section ftco-animate">
+		          	<span class="subheading">Welcome to Legalcare</span>
+		            <h2 class="mb-4">We Always Fight For Your Justice to Win</h2>
+		            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+		            <div class="tabulation-2 mt-4">
+									<ul class="nav nav-pills nav-fill d-md-flex d-block">
+									  <li class="nav-item mb-md-0 mb-2">
+									    <a class="nav-link active py-2" data-toggle="tab" href="#home1">Our Mission</a>
+									  </li>
+									  <li class="nav-item px-lg-2 mb-md-0 mb-2">
+									    <a class="nav-link py-2" data-toggle="tab" href="#home2">Our Vision</a>
+									  </li>
+									  <li class="nav-item">
+									    <a class="nav-link py-2 mb-md-0 mb-2" data-toggle="tab" href="#home3">Our Value</a>
+									  </li>
+									</ul>
+									<div class="tab-content bg-light rounded mt-2">
+									  <div class="tab-pane container p-0 active" id="home1">
+									  	<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+									  </div>
+									  <div class="tab-pane container p-0 fade" id="home2">
+									  	<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+									  </div>
+									  <div class="tab-pane container p-0 fade" id="home3">
+									  	<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+									  </div>
+									</div>
+								</div>
+		            <div class="years d-flex mt-4 mt-md-5">
+		            	<h4>
+			            	<span class="number mr-2" data-number="40">0</span>
+				            <span>Years of Experienced</span>
+			            </h4>
+		            </div>
+		          </div>
+		        </div>
+	        </div>
+        </div>
+    	</div>
+    </section>
 
-.case .text span {
-  display: block;
-  font-size: 14px;
-  margin-bottom: 10px;
-}
+    <section class="ftco-section">
+    	<div class="container">
+    		<div class="row justify-content-center mb-5">
+          <div class="col-md-10 text-center heading-section ftco-animate">
+          	<span class="subheading">Explore Case Studies</span>
+            <h2 class="mb-4">1000+ Completed Cases Successfully</h2>
+          </div>
+        </div>
+        <div class="row">
+        	<div class="col-md-12">
+        		<div class="carousel-case owl-carousel ftco-owl">
+              <div class="item">
+		        		<div class="case img d-flex align-items-center justify-content-center" style="background-image: url('{% static 'assets/images/1 (2).jpg' %}');">
+		        			<div class="text text-center">
+		        				<h3><a href="#">Legal Seperation</a></h3>
+		        				<span>Corporate</span>
+		        			</div>
+		        		</div>
+              </div>
+              <div class="item">
+		        		<div class="case img d-flex align-items-center justify-content-center" style="background-image: url('{% static 'assets/images/1 (2).jpg' %}');">
+		        			<div class="text text-center">
+		        				<h3><a href="#">Legal Seperation</a></h3>
+		        				<span>Corporate</span>
+		        			</div>
+		        		</div>
+              </div>
+              <div class="item">
+		        		<div class="case img d-flex align-items-center justify-content-center" style="background-image:url('{% static 'assets/images/1 (2).jpg' %}');">
+		        			<div class="text text-center">
+		        				<h3><a href="#">Legal Seperation</a></h3>
+		        				<span>Corporate</span>
+		        			</div>
+		        		</div>
+              </div>
+              <div class="item">
+		        		<div class="case img d-flex align-items-center justify-content-center" style="background-image:url('{% static 'assets/images/1 (2).jpg' %}');">
+		        			<div class="text text-center">
+		        				<h3><a href="#">Legal Seperation</a></h3>
+		        				<span>Corporate</span>
+		        			</div>
+		        		</div>
+              </div>
+            </div>
+        	</div>
+        	<div class="col-md-12 text-center mt-4">
+        		<a href="case.html" class="btn btn-primary px-5">See All Successful Cases</a>
+        	</div>
+        </div>
+    	</div>
+    </section>
 
-/* دکمه مشاهده */
-.case .btn {
-  background: #c5a46d; /* رنگ طلایی مثل قالب */
-  border: none;
-}
+    <section class="ftco-section ftco-no-pt">
+    	<div class="container-fluid px-md-5">
+    		<div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+          	<span class="subheading">Our Attorney</span>
+            <h2 class="mb-4">Our Legal Attorneys</h2>
+          </div>
+        </div>
+        <div class="row">
+        	<div class="col-lg-3 col-sm-6">
+        		<div class="block-2 ftco-animate">
+	            <div class="flipper">
+	              <div class="front" style="background-image: url('{% static 'assets/images/1 (2).jpg' %}');">
+	                <div class="box">
+	                  <h2>Ryan Anderson</h2>
+	                  <p>Civil Lawyer</p>
+	                </div>
+	              </div>
+	              <div class="back">
+	                <!-- back content -->
+	                <blockquote>
+	                  <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text &rdquo;</p>
+	                </blockquote>
+	                <div class="author d-flex">
+	                  <div class="image align-self-center">
+	                    <img src="images/person_1.jpg" alt="">
+	                  </div>
+	                  <div class="name align-self-center ml-3">Ryan Anderson <span class="position">Civil Lawyer</span></div>
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+        	</div>
+        	<div class="col-lg-3 col-sm-6">
+        		<div class="block-2 ftco-animate">
+	            <div class="flipper">
+	              <div class="front" style="background-image: url('{% static 'assets/images/1 (2).jpg' %}');">
+	                <div class="box">
+	                  <h2>Greg Washer</h2>
+	                  <p>Business Lawyer</p>
+	                </div>
+	              </div>
+	              <div class="back">
+	                <!-- back content -->
+	                <blockquote>
+	                  <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text &rdquo;</p>
+	                </blockquote>
+	                <div class="author d-flex">
+	                  <div class="image align-self-center">
+	                    <img src="images/person_2.jpg" alt="">
+	                  </div>
+	                  <div class="name align-self-center ml-3">Greg Washer<span class="position">Business Lawyer</span></div>
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+        	</div>
+        	<div class="col-lg-3 col-sm-6">
+        		<div class="block-2 ftco-animate">
+	            <div class="flipper">
+	              <div class="front" style="background-image: url('{% static 'assets/images/1 (2).jpg' %}');">
+	                <div class="box">
+	                  <h2>Tony Henderson</h2>
+	                  <p>Criminal Defense</p>
+	                </div>
+	              </div>
+	              <div class="back">
+	                <!-- back content -->
+	                <blockquote>
+	                  <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text &rdquo;</p>
+	                </blockquote>
+	                <div class="author d-flex">
+	                  <div class="image align-self-center">
+	                    <img src="images/person_3.jpg" alt="">
+	                  </div>
+	                  <div class="name align-self-center ml-3">Tony Henderson <span class="position">Criminal Defense</span></div>
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+        	</div>
+        	<div class="col-lg-3 col-sm-6">
+        		<div class="block-2 ftco-animate">
+	            <div class="flipper">
+	              <div class="front" style="background-image: url('{% static 'assets/images/1 (2).jpg' %}');">
+	                <div class="box">
+	                  <h2>Jack Smith</h2>
+	                  <p>Insurance Lawyer</p>
+	                </div>
+	              </div>
+	              <div class="back">
+	                <!-- back content -->
+	                <blockquote>
+	                  <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text &rdquo;</p>
+	                </blockquote>
+	                <div class="author d-flex">
+	                  <div class="image align-self-center">
+	                    <img src="images/person_4.jpg" alt="">
+	                  </div>
+	                  <div class="name align-self-center ml-3">Jack Smith <span class="position">Insurance Lawyer</span></div>
+	                </div>
+	              </div>
+	            </div>
+	          </div>
+        	</div>
+        </div>
+    	</div>
+    </section>
+		
 
-.case .btn:hover {
-  background: #a88952;
-}
+		<section class="ftco-consultation ftco-section ftco-no-pt ftco-no-pb img" style="background-image: url('{% static 'assets/images/1 (2).jpg' %}');">
+			<div class="overlay"></div>
+    	<div class="container">
+    		<div class="row d-md-flex justify-content-end">
+    			<div class="col-md-6 half p-3 py-5 pl-md-5 ftco-animate heading-section heading-section-white">
+    				<span class="subheading">Booking an Appointment</span>
+    				<h2 class="mb-4">Free Consultation</h2>
+    				<form action="#" class="consultation">
+	            <div class="form-group">
+	              <input type="text" class="form-control" placeholder="Your Name">
+	            </div>
+	            <div class="form-group">
+	              <input type="text" class="form-control" placeholder="Your Email">
+	            </div>
+	            <div class="form-group">
+	              <input type="text" class="form-control" placeholder="Subject">
+	            </div>
+	            <div class="form-group">
+	              <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+	            </div>
+	            <div class="form-group">
+	              <input type="submit" value="Send message" class="btn btn-dark py-3 px-4">
+	            </div>
+	          </form>
+    			</div>
+    		</div>
+    	</div>
+    </section>
 
-.blog-entry .block-20 {
-  display: block;
-  width: 100%;
-  height: 250px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 5px; /* برای ظاهر بهتر */
-}
 
-.blog-entry .text {
-  flex-grow: 1;
-  width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-}
+    <section class="ftco-section testimony-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+          	<span class="subheading">Testimonial</span>
+            <h2 class="mb-4">Happy Clients</h2>
+          </div>
+        </div>
+        <div class="row ftco-animate">
+          <div class="col-md-12">
+            <div class="carousel-testimony owl-carousel ftco-owl">
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                  <div class="text">
+                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url('{% static 'assets/images/1 (2).jpg' %}');"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Roger Scott</p>
+		                    <span class="position">Marketing Manager</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                  <div class="text">
+                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url('{% static 'assets/images/1 (2).jpg' %}');"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Roger Scott</p>
+		                    <span class="position">Marketing Manager</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                  <div class="text">
+                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url('{% static 'assets/images/1 (2).jpg' %}');"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Roger Scott</p>
+		                    <span class="position">Marketing Manager</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                  <div class="text">
+                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url('{% static 'assets/images/1 (2).jpg' %}');"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Roger Scott</p>
+		                    <span class="position">Marketing Manager</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                  <div class="text">
+                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url('{% static 'assets/images/1 (2).jpg' %}');"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Roger Scott</p>
+		                    <span class="position">Marketing Manager</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-/* رفع تداخل‌های احتمالی FTCO */
-.ftco-animate {
-  width: 100% !important;
-  transform: none !important;
-  opacity: 1 !important;
-}
+    <section class="ftco-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center mb-5 pb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading">Our Blog</span>
+            <h2>Recent Blog</h2>
+          </div>
+        </div>
+        <div class="row d-flex">
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+          		<div class="text px-4 py-4">
+          			<h3 class="heading mb-0"><a href="#">All you want to know about industrial laws</a></h3>
+          		</div>
+              <a href="blog-single.html" class="block-20" style="background-image: url('{% static 'assets/images/1 (2).jpg' %}');">
+              </a>
+              <div class="text p-4 float-right d-block">
+              	<div class="topper d-flex align-items-center">
+              		<div class="one py-2 pl-3 pr-1 align-self-stretch">
+              			<span class="day">18</span>
+              		</div>
+              		<div class="two pl-0 pr-3 py-2 align-self-stretch">
+              			<span class="yr">2019</span>
+              			<span class="mos">October</span>
+              		</div>
+              	</div>
+                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                <p><a href="#" class="btn btn-primary">Read more</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+          		<div class="text px-4 py-4">
+          			<h3 class="heading mb-0"><a href="#">All you want to know about industrial laws</a></h3>
+          		</div>
+              <a href="blog-single.html" class="block-20" style="background-image:url('{% static 'assets/images/1 (2).jpg' %}');">
+              </a>
+              <div class="text p-4 float-right d-block">
+              	<div class="topper d-flex align-items-center">
+              		<div class="one py-2 pl-3 pr-1 align-self-stretch">
+              			<span class="day">18</span>
+              		</div>
+              		<div class="two pl-0 pr-3 py-2 align-self-stretch">
+              			<span class="yr">2019</span>
+              			<span class="mos">October</span>
+              		</div>
+              	</div>
+                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                <p><a href="#" class="btn btn-primary">Read more</a></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+          		<div class="text px-4 py-4">
+          			<h3 class="heading mb-0"><a href="#">All you want to know about industrial laws</a></h3>
+          		</div>
+              <a href="blog-single.html" class="block-20" style="background-image: uurl('{% static 'assets/images/1 (2).jpg' %}');">
+              </a>
+              <div class="text p-4 float-right d-block">
+              	<div class="topper d-flex align-items-center">
+              		<div class="one py-2 pl-3 pr-1 align-self-stretch">
+              			<span class="day">18</span>
+              		</div>
+              		<div class="two pl-0 pr-3 py-2 align-self-stretch">
+              			<span class="yr">2019</span>
+              			<span class="mos">October</span>
+              		</div>
+              	</div>
+                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                <p><a href="#" class="btn btn-primary">Read more</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+		
 
-/* تنظیم عرض ستون‌ها در رزولوشن‌های مختلف */
-@media (max-width: 767px) {
-  .col-md-4 {
-    width: 100% !important; /* در موبایل، هر مقاله کل عرض را بگیرد */
-  }
-}
+    <section class="ftco-section ftco-no-pt ftco-no-pb bg-light">
+      <div class="container">
+        <div class="row d-flex justify-content-end">
+        	<div class="col-md-8 py-4 px-md-4 bg-primary">
+        		<div class="row">
+		          <div class="col-md-6 ftco-animate d-flex align-items-center">
+		            <h2 class="mb-0" style="color:white; font-size: 24px;">Subcribe to our Newsletter</h2>
+		          </div>
+		          <div class="col-md-6 d-flex align-items-center">
+		            <form action="#" class="subscribe-form">
+		              <div class="form-group d-flex">
+		                <input type="text" class="form-control" placeholder="Enter email address">
+		                <input type="submit" value="Subscribe" class="submit px-3">
+		              </div>
+		            </form>
+		          </div>
+	          </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-.ftco-footer {
-  padding: 60px 0;
-  background: #1a1a1a;
-  color: #fff;
-}
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="logo"><a href="#">Legalcare <span>A Law Firm Agency</span></a></h2>
+              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4 ml-md-5">
+              <h2 class="ftco-heading-2">Practice Areas</h2>
+              <ul class="list-unstyled">
+                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Family Law</a></li>
+                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Business Law</a></li>
+                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Insurance Law</a></li>
+                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Criminal Law</a></li>
+                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Drug Offenses</a></li>
+                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Fire Accident</a></li>
+                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Employment Law</a></li>
+                <li><a href="#" class="py-1 d-block"><span class="ion-ios-arrow-forward mr-3"></span>Property Law</a></li>
 
-/* لوگو و متن */
-.ftco-footer .logo a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 22px;
-  font-weight: bold;
-}
-.ftco-footer .logo a span {
-  font-size: 14px;
-  font-weight: normal;
-}
-.ftco-footer p {
-  color: #ccc;
-  font-size: 16px;
-  margin-bottom: 10px;
-}
+              </ul>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+          <div class="col-md">
+             <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Business Hours</h2>
+              <div class="opening-hours">
+              	<h4>Opening Days:</h4>
+              	<p class="pl-3">
+              		<span>Monday – Friday : 9am to 20 pm</span>
+              		<span>Saturday : 9am to 17 pm</span>
+              	</p>
+              	<h4>Vacations:</h4>
+              	<p class="pl-3">
+              		<span>All Sunday Days</span>
+              		<span>All Official Holidays</span>
+              	</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
 
-/* آیکون‌های شبکه اجتماعی */
-.ftco-footer-social {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  padding: 0;
-}
-.ftco-footer-social li {
-  list-style: none;
-}
-.ftco-footer-social li a {
-  color: #fff;
-  font-size: 20px;
-  transition: color 0.3s;
-}
-.ftco-footer-social li a:hover {
-  color: #f0ad4e;
-}
-.blog-entry {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%; /* اطمینان از استفاده کامل از عرض ستون */
-  box-sizing: border-box; /* جلوگیری از مشکلات margin/padding */
-}
-
-.blog-entry .text {
-  flex-grow: 1;
-  width: 100%; /* اطمینان از استفاده از کل عرض */
-  padding: 15px; /* تنظیم فاصله داخلی مناسب */
-}
-
-.blog-entry .block-20 {
-  display: block;
-  width: 100%;
-  height: 250px;
-  background-size: cover;
-  background-position: center;
-}
-
-.container {
-  max-width: 1200px; /* عرض مناسب برای container */
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* رفع مشکلات احتمالی تداخل FTCO */
-.ftco-animate {
-  width: 100% !important; /* جلوگیری از تغییر عرض توسط انیمیشن */
-}
-
-/* نقشه */
-.ftco-footer iframe {
-  width: 100%;
-  height: 250px;
-  border-radius: 8px;
-}
-
-/* بک‌تو-تاپ */
-.back-to-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #f0ad4e;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 50px;
-  z-index: 1000;
-}
-.back-to-top i {
-  font-size: 24px;
-  color: #fff;
-}
-
-/* متن طراح */
-.ftco-footer .designer {
-  font-size: 14px;
-  color: #aaa;
-  margin-top: 25px;
-}
-.row {
-  margin-left: -15px;
-  margin-right: -15px;
-}
-
-/* استایل برای موبایل */
-@media (max-width: 767px) {
-  .ftco-footer .row.mb-5 {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .ftco-footer .col-md-4 {
-    margin-bottom: 30px;
-    width: 100%;
-  }
-
-  .ftco-footer iframe {
-    height: 200px; /* کوچکتر برای موبایل */
-  }
-
-  .ftco-footer-social {
-    justify-content: center;
-  }
-}
-
-     
-.ftco_navbar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.container {
-  display: flex;
-  justify-content: space-between; /* فاصله بین لوگو و دکمه همبرگری */
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.navbar-brand {
-  margin-left: 15px; /* فاصله از سمت چپ برای لوگو */
-  text-align: center;
-}
-
-.navbar-toggler {
-  margin-right: 15px; /* فاصله از سمت راست برای دکمه همبرگری */
-}
-
-.navbar-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.nav-item {
-  margin: 0 15px; /* فاصله بین آیتم‌های منو */
-}
-
-@media (max-width: 991px) {
-  .container {
-    justify-content: space-between; /* اطمینان از فاصله بین لوگو و دکمه در موبایل */
-  }
-
-  .navbar-brand {
-    margin-left: 10px; /* فاصله کمتر در موبایل */
-  }
-
-  .navbar-toggler {
-    margin-right: 10px; /* فاصله کمتر در موبایل */
-  }
-
-  .navbar-nav {
-    flex-direction: column;
-    text-align: center;
-    margin-top: 10px; /* فاصله عمودی برای منوی بازشده */
-  }
-
-  .nav-item {
-    margin: 10px 0; /* فاصله عمودی بین آیتم‌ها در منوی موبایل */
-  }
-}
-      @media (max-width: 767px) {
-  .col-md-6.ftco-animate {
-    text-align: center;
-  }
-}
-    </style>
+            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
   
-  </head>
-  {% endblock %}
- {% block content %}
 
-<!-- Navbar -->
-<nav class="navbar px-md-0 navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-  <div class="container d-flex align-items-center">
-    <a class="navbar-brand" href="index.html">حمید به گذر <span>وکیل پایه یک دادگستری</span></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="oi oi-menu"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="ftco-nav">
-      <ul class="navbar-nav mx-auto">
-        <li class="nav-item active"><a href="#" class="nav-link">صفحه اصلی</a></li>
-        <li class="nav-item"><a href="#about" class="nav-link">درباره من</a></li>
-        <li class="nav-item"><a href="#services" class="nav-link">خدمات حقوقی</a></li>
-        <li class="nav-item"><a href="#articles" class="nav-link">مقالات</a></li>
-        <li class="nav-item"><a href="#question" class="nav-link">سوالات متداول</a></li>
-        <li class="nav-item">
-          <a class="nav-link btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">مشاوره رایگان</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
-<!-- Hero -->
-<div class="hero-wrap js-fullheight align-items-center justify-content-center" style="background-image: url('static/assets/images/beh.jpg');" data-stellar-background-ratio="0.5">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
-      <div class="col-md-6 ftco-animate">
-        <p class="subheading" style="font-size: 40px; font-family: Sahel;">به وب سایت من خوش آمدید</p>
-        <p style="font-weight: bold; font-family: Sahel;">
-          وکلا برای
-          <span class="txt-rotate" style="direction: rtl; font-weight:bold;" data-period="2000" data-rotate='[ "عدالت", "حقوق", "برابری" ]'></span>
-          می جنگند
-        </p>
-        <p class="mb-4" style="font-size: 30px;">وکیل حمید به گذر کارشناس ارشد حقوق، همواره در تلاش است تا دسترسی آسان به خدمات حقوقی را برای شما فراهم کند.</p>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- Modal -->
-<div class="modal fade" id="myModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <h4 class="modal-title">برای دریافت مشاوره رایگان تماس بگیرید</h4>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-inbound-fill" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877zM15.854.146a.5.5 0 0 1 0 .708L11.707 5H14.5a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 1 0v2.793L15.146.146a.5.5 0 0 1 .708 0"/>
-        </svg>
-      </div>
-
-      <div class="modal-body">09183135508</div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">بستن</button>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- Services Section -->
-<section class="ftco-section ftco-no-pt" id="services">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-3 py-5">
-        <div class="heading-section ftco-animate">
-          <span class="subheading">خدمات</span>
-          <h2 class="mb-4">چرا ما؟</h2>
-          <p>ارائه مشاوره تلفنی رایگان.<br>
-             امکان پرداخت حق الوکاله به صورت اقساطی.<br>
-             تاکید بر صداقت و صراحت با موکل.<br>
-             ارزیابی شانس موفقیت پرونده.
-          </p>
-          <p><a href="#" class="btn btn-primary py-3 px-4">مشاوره رایگان</a></p>
-        </div>
-      </div>
-
-      <div class="col-lg-9 services-wrap px-4 pt-5">
-        <div class="row pt-md-3">
-          <div class="col-md-4 d-flex align-items-stretch">
-            <div class="services text-center">
-              <div class="icon d-flex justify-content-center align-items-center">
-                <span class="flaticon-lawyer"></span>
-              </div>
-              <div class="text">
-                <h3>دعاوی خانواده</h3>
-                <p>طلاق، حضانت فرزندان، تقسيط مهريه، تمکین، استرداد هدایای نامزدی و جهیزیه و ….</p>
-              </div>
-              <a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="ion-ios-arrow-round-forward"></span></a>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex align-items-stretch">
-            <div class="services text-center">
-              <div class="icon d-flex justify-content-center align-items-center">
-                <span class="flaticon-lawyer"></span>
-              </div>
-              <div class="text">
-                <h3>دعاوی تجاری</h3>
-                <p>عزل مدير شركت، محكوميت به اختلاس، خيانت در امانت، شركت با مسؤوليت محدود و …</p>
-              </div>
-              <a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="ion-ios-arrow-round-forward"></span></a>
-            </div>
-          </div>
-          <div class="col-md-4 d-flex align-items-stretch">
-            <div class="services text-center">
-              <div class="icon d-flex justify-content-center align-items-center">
-                <span class="flaticon-lawyer"></span>
-              </div>
-              <div class="text">
-                <h3>دعاوی بانکی</h3>
-                <p>مطالبات بانكي، مطالبه وجه،‌ مطالبه چك و سفته، دزدی از صورت حساب و …</p>
-              </div>
-              <a href="#" class="btn-custom d-flex align-items-center justify-content-center"><span class="ion-ios-arrow-round-forward"></span></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- About Section -->
-<section class="ftco-section ftco-no-pt ftco-no-pb" id="about">
-  <div class="container">
-    <div class="row d-flex">
-      <div class="col-md-6 d-flex">
-        <div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-end" style="background-image:url('static/assets/images/1 (2).jpg');">
-          <a href="static/videos/intro.mp4" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
-            <span class="icon-play"></span>
-          </a>
-        </div>
-      </div>
-<div class="col-md-6 pl-md-5">
-  <div class="row justify-content-start pt-3 pb-3">
-    <div class="col-12 d-flex flex-column ftco-animate fadeInUp ftco-animated">
-      <span class="subheading">به دفتر من خوش آمدید</span>
-      <h2 class="mb-4">ما برای حقوق موکل خود می جنگیم</h2>
-      <p>
-        موسسه حقوقی دادگستر با مدیریت آقای حمید به گذر وکیل پایه یک دادگستری با تکیه بر تجربه و دانش حقوقی، به حل مشکلات شما می پردازد.
-      </p>
-
-      <div class="tabulation-2 mt-4">
-        <ul class="nav nav-pills nav-fill d-md-flex d-block">
-          <li class="nav-item mb-md-0 mb-2">
-            <a class="nav-link active py-2" data-toggle="tab" href="#home1">ماموریت ما</a>
-          </li>
-          <li class="nav-item px-lg-2 mb-md-0 mb-2">
-            <a class="nav-link py-2" data-toggle="tab" href="#home2">اهداف ما</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link py-2 mb-md-0 mb-2" data-toggle="tab" href="#home3">ارزش های ما</a>
-          </li>
-        </ul>
-
-        <div class="tab-content bg-light rounded mt-2">
-          <div class="tab-pane container p-0 active" id="home1">
-            <p>موسسه حقوقی دادگستر با مدیریت آقای حمید به گذر وکیل پایه یک دادگستری با تکیه بر تجربه و دانش حقوقی، به حل مشکلات شما می پردازد.</p>
-          </div>
-          <div class="tab-pane container p-0 fade" id="home2">
-            <p>موسسه حقوقی دادگستر با مدیریت آقای حمید به گذر وکیل پایه یک دادگستری با تکیه بر تجربه و دانش حقوقی، به حل مشکلات شما می پردازد.</p>
-          </div>
-          <div class="tab-pane container p-0 fade" id="home3">
-            <p>موسسه حقوقی دادگستر با مدیریت آقای حمید به گذر وکیل پایه یک دادگستری با تکیه بر تجربه و دانش حقوقی، به حل مشکلات شما می پردازد.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="years d-flex mt-4 mt-md-5">
-        <h4>
-          <span>سابقه </span>
-          <span class="number mr-2" data-number="15">15</span>
-          <span>سال</span>
-        </h4>
-      </div>
-    </div>
-  </div>
-</div>
-    </div>
-  </div>
-</section>
-
-<!-- Articles Section -->
-<section class="ftco-section" id="articles">
-  <div class="container">
-    <div class="row justify-content-center mb-5 pb-3">
-      <div class="col-md-7 heading-section text-center ftco-animate">
-        <span class="subheading">مقالات</span>
-        <h2>آخرین مقالات</h2>
-      </div>
-    </div>
-
-   <div class="row">
-  <div class="col-md-12">
-    <div class="carousel-case owl-carousel ftco-owl">
-      
-      {% for i in page_obj%}
-      <div class="item">
-        <div class="case img d-flex align-items-center justify-content-center" 
-             style="background-image: url({{ i.thumbnail.url }});">
-          <div class="text text-center">
-            <h3>
-              <a href="{% url 'home:post_detail' i.id %}">{{ i.title }}</a>
-            </h3>
-            <span>{{ i.created.day }}/{{ i.created.month }}/{{ i.created.year }}</span>
-            <p class="mt-3">{{ i.body|truncatewords:20 }}</p>
-            <p><a href="{% url 'home:post_detail' i.id %}" class="btn btn-primary px-4">مشاهده</a></p>
-          </div>
-        </div>
-      </div>
-      {% endfor %}
-      
-    </div>
-  </div>
-</div>
-  </div>
-</section>
-<!-- Footer -->
-<footer class="ftco-footer ftco-bg-dark ftco-section">
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
-    <i class="bi bi-arrow-up-short"></i>
-  </a>
-  <div class="container">
-    <div class="row mb-5">
-      <div class="col-md-4 col-12">
-        <div class="ftco-footer-widget mb-4">
-          <h2 class="logo"><a href="#">حمید به گذر <span>وکیل پایه یک دادگستری</span></a></h2>
-          <p>تهران.</p>
-          <h2 class="logo"><a href="#"><span>شماره تماس:</span></a></h2>
-          <p>09183135508</p>
-          <h2 class="logo"><a href="#"><span>شماره تماس دفتر:</span></a></h2>
-          <p>38271819</p>
-          <ul class="ftco-footer-social list-unstyled mt-5">
-            <li><a href="#"><span class="bi bi-twitter"></span></a></li>
-            <li><a href="#"><span class="bi bi-facebook"></span></a></li>
-            <li><a href="#"><span class="bi bi-instagram"></span></a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-12">
-        <div class="ftco-footer-widget mb-4">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4397.337993677362!2d48.52349801051959!3d34.792725812147374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ff1ed0019f0027f%3A0xd42485fca32f027a!2z2K_Zgdiq2LEg2Yjaqdin2YTYqiDZgdiq2KfZhtmHINin2LPZhdin2LnbjNmE24w!5e1!3m2!1sfa!2s!4v1732889917368!5m2!1sfa!2s" style="border:0; width:100%; height:250px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-12">
-        <div class="ftco-footer-widget mb-4">
-          <h2 class="logo"><a href="#">ساعات کاری</a></h2>
-          <p>شنبه تا چهارشنبه: ۹ صبح تا ۵ عصر</p>
-          <p>پنج‌شنبه: ۹ صبح تا ۱ ظهر</p>
-          <p>جمعه و تعطیلات: تعطیل</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <p class="designer">طراحی و پیاده‌سازی: عباس اسماعیلی</p>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- Loader -->
-<div id="ftco-loader" class="show fullscreen">
-  <svg class="circular" width="48px" height="48px">
-    <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
-    <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/>
-  </svg>
-</div>
-
-<!-- Scripts -->
 <script src="{% static 'js/jquery.min.js' %}"></script>
 <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
 <script src="{% static 'js/popper.min.js' %}"></script>
@@ -608,28 +662,6 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="{% static 'js/google-map.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
-     <script>
-$('.carousel-case').owlCarousel({
-    loop: true,
-    margin: 30,
-    nav: true,
-    dots: true,
-    autoplay: true,
-    autoplayTimeout: 4000,
-    responsive: {
-        0: {
-            items: 1
-        },
-        768: {
-            items: 2
-        },
-        1200: {
-            items: 3
-        }
-    }
-});
-</script>
+  </body>
 {% endblock %}
-
-
 </html>
