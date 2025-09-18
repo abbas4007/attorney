@@ -40,6 +40,54 @@
   box-sizing: border-box;
   margin-bottom: 20px; /* فاصله بین مقالات */
 }
+/* کانتینر اصلی کاروسل */
+.carousel-case .item {
+  margin: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* کارت هر مقاله */
+.case.img {
+  height: 300px; /* ارتفاع ثابت */
+  background-size: cover;
+  background-position: center center;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* متن روی کارت */
+.case .text {
+  background: rgba(0, 0, 0, 0.6); /* بک‌گراند نیمه شفاف روی عکس */
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 90%;
+  transition: all 0.3s ease-in-out;
+}
+
+.case .text h3 a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.case .text span {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* دکمه مشاهده */
+.case .btn {
+  background: #c5a46d; /* رنگ طلایی مثل قالب */
+  border: none;
+}
+
+.case .btn:hover {
+  background: #a88952;
+}
 
 .blog-entry .block-20 {
   display: block;
@@ -486,7 +534,7 @@
     </div>
   </div>
 </div>
-
+  </div>
 </section>
 <!-- Footer -->
 <footer class="ftco-footer ftco-bg-dark ftco-section">
@@ -560,7 +608,27 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="{% static 'js/google-map.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
-
+     <script>
+$('.carousel-case').owlCarousel({
+    loop: true,
+    margin: 30,
+    nav: true,
+    dots: true,
+    autoplay: true,
+    autoplayTimeout: 4000,
+    responsive: {
+        0: {
+            items: 1
+        },
+        768: {
+            items: 2
+        },
+        1200: {
+            items: 3
+        }
+    }
+});
+</script>
 {% endblock %}
 
 
