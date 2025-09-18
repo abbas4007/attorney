@@ -157,7 +157,7 @@
 </section>
 
 
-   	
+
 <!-- About Section -->
 <section class="ftco-section ftco-no-pt ftco-no-pb" id="about">
   <div class="container">
@@ -217,9 +217,9 @@
     </div>
   </div>
 </section>
-    
 
-		
+
+
 
 
 
@@ -242,7 +242,7 @@
           			<h3 class="heading mb-0">
                         <a href="{% url 'home:post_detail' i.id %}">{{ i.title }}</a></h3>
                 </div>
-             
+
               <div class="text p-4 float-right d-block">
               	 <div class="topper d-flex align-items-center mb-3">
               <div class="one py-2 pl-3 pr-1 align-self-stretch">
@@ -255,16 +255,17 @@
             </div>
             <p>{{ i.body|truncatewords:30 }}</p>
             <p><a href="{% url 'home:post_detail' i.id %}" class="btn btn-primary">مشاهده</a></p>
-                  
+
               </div>
             </div>
           </div>
-             {% endfor %}
-          
+             
+
         </div>
+          {% endfor %}
       </div>
     </section>
-		
+
 
 
     <footer class="ftco-footer ftco-bg-dark ftco-section">
@@ -337,8 +338,8 @@
         </div>
       </div>
     </footer>
-    
-  
+
+
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
