@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     'django_quill',
     'tinymce',
+    'captcha',
 
 ]
 
