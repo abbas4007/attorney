@@ -1,7 +1,6 @@
 {
   "platform": "django",
-  "pythonVersion": "3.9",
-    "static": {
+  "static": {
     "/static/": "staticfiles"
   }
 }
