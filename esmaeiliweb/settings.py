@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'django_quill',
     'tinymce',
     'captcha',
+    'ckeditor',
+    'ckeditor_uploader',
 
 ]
 
