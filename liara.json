@@ -2,5 +2,22 @@
   "platform": "django",
   "static": {
     "/static/": "staticfiles"
+  },
+
+
+"disks": [
+    {
+      "name": "database",
+      "mountTo": "database"
+    },
+    {
+      "name": "media",
+      "mountTo": "media"
+    }
+  ],
+  "build": {
+    "commands": [
+      "python manage.py collectstatic --noinput"
+    ]
   }
 }
