@@ -63,7 +63,7 @@
                           <td>
                             {% if article.status == 'p' %}
                               <span class="badge badge-success">منتشرشده</span>
-                              <a target="_blank" class="badge badge-primary" href="{% url 'home:detail' article.id %}">نمایش</a>
+                              <a target="_blank" class="badge badge-primary" href="{% url 'home:post_detail' article.id %}">نمایش</a>
 
                             {% else %}
                               {% if article.status == 'd' %}
