@@ -169,6 +169,5 @@ QUILL_CONFIGS = {
     }
 }
 
+LOGIN_URL = "account:login"
 LOGIN_REDIRECT_URL = "account:home"
-LOGIN_URL = "login"
-LOGOUT_REDIRECT_URL = "login"
