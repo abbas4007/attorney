@@ -1,10 +1,12 @@
 {
   "platform": "django",
+  "platformConfig": {
+    "pythonVersion": "3.12"
+  },
   "static": {
     "/static/": "staticfiles"
   },
-
-"disks": [
+  "disks": [
     {
       "name": "database",
       "mountTo": "database"
