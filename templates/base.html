@@ -258,7 +258,7 @@
                 <span class="mos">{{ i.created.month }}</span>
               </div>
             </div>
-            <p>{{ i.body|truncatewords:30 }}</p>
+            <p>{{ article.description.html|safe|truncatewords:30 }}</p>
             <p><a href="{% url 'home:post_detail' i.id %}" class="btn btn-primary">مشاهده</a></p>
           </div>
         </div>

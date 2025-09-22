@@ -51,7 +51,7 @@
     {% endif %}
 </td>                          <td>{{article.category_to_str|clean_html}}</td>
                           <td>{{article.author.get_full_name|clean_html}}</td>
-                          <td>{{article.description|clean_html|striptags|truncatewords:"30"}}</td>
+                          <td>{{ article.description.html|safe|truncatewords:30 }}</td>
                           <td>{{article.jpublish}}</td>
                           <td>
                             {% if article.is_special %}
